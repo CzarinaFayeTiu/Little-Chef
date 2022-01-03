@@ -5,20 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".NotesActivity">
+    tools:context=".BookmarksActivity">
 
     <TextView
-        android:text="My Notes"
+        android:text="Bookmarks"
         android:textSize="30dp"
         android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:textColor="@color/text"/>
-
-    <ImageView
-        android:layout_width="131dp"
-        android:layout_height="162dp"
-        android:icon="@drawable/ic_baseline_add" />
 
 </LinearLayout>

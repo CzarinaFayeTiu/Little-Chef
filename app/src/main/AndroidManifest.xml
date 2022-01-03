@@ -8,16 +8,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.LittleChef">
-
+        <activity
+            android:name=".BookmarksActivity"
+            android:exported="false" />
         <activity
             android:name=".MainDetailActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".NotesAddActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".NotesActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".RecipeActivity"
             android:exported="true">
@@ -29,12 +31,10 @@
         </activity>
         <activity
             android:name=".FacebookActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
