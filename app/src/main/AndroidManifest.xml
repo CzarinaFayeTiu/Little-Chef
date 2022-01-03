@@ -4,22 +4,36 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/littlechef_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LittleChef">
+
         <activity
-            android:name=".FacebookActivity"
-            android:exported="false" />
+            android:name=".MainDetailActivity"
+            android:exported="true"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".NotesAddActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".NotesActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".RecipeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".FacebookActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
         </activity>
     </application>
 
