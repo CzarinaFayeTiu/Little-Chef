@@ -37,7 +37,9 @@ class MainActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_home -> Toast.makeText(applicationContext, "Clicked Home", Toast.LENGTH_SHORT).show()
-                R.id.nav_notes -> Toast.makeText(applicationContext, "Clicked My Notes", Toast.LENGTH_SHORT).show()
+                R.id.nav_notes -> {
+                    startActivity(Intent(applicationContext, NoteActivity::class.java))
+                }
                 R.id.nav_bookmarks -> Toast.makeText(applicationContext, "Clicked Bookmark", Toast.LENGTH_SHORT).show()
                 R.id.nav_converter -> Toast.makeText(applicationContext, "Clicked Converter", Toast.LENGTH_SHORT).show()
                 R.id.nav_timer -> {
