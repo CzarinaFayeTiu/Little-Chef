@@ -1,5 +1,6 @@
 package com.mobdeve.s12.avila.tiu.littlechef
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -39,7 +40,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_notes -> Toast.makeText(applicationContext, "Clicked My Notes", Toast.LENGTH_SHORT).show()
                 R.id.nav_bookmarks -> Toast.makeText(applicationContext, "Clicked Bookmark", Toast.LENGTH_SHORT).show()
                 R.id.nav_converter -> Toast.makeText(applicationContext, "Clicked Converter", Toast.LENGTH_SHORT).show()
-                R.id.nav_timer -> Toast.makeText(applicationContext, "Clicked Timer", Toast.LENGTH_SHORT).show()
+                R.id.nav_timer -> {
+                    startActivity(Intent(applicationContext, TimerActivity::class.java))
+                }
                 R.id.nav_music -> Toast.makeText(applicationContext, "Clicked Music", Toast.LENGTH_SHORT).show()
                 R.id.nav_share -> Toast.makeText(applicationContext, "Clicked Share", Toast.LENGTH_SHORT).show()
             }
