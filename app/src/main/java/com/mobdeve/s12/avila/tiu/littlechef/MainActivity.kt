@@ -41,11 +41,15 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(applicationContext, NoteActivity::class.java))
                 }
                 R.id.nav_bookmarks -> Toast.makeText(applicationContext, "Clicked Bookmark", Toast.LENGTH_SHORT).show()
-                R.id.nav_converter -> Toast.makeText(applicationContext, "Clicked Converter", Toast.LENGTH_SHORT).show()
+                R.id.nav_converter-> {
+                    startActivity(Intent(applicationContext, ConverterActivity::class.java))
+                }
                 R.id.nav_timer -> {
                     startActivity(Intent(applicationContext, TimerActivity::class.java))
                 }
-                R.id.nav_music -> Toast.makeText(applicationContext, "Clicked Music", Toast.LENGTH_SHORT).show()
+                R.id.nav_music -> {
+                    startActivity(Intent(applicationContext, MusicActivity::class.java))
+                }
                 R.id.nav_share -> Toast.makeText(applicationContext, "Clicked Share", Toast.LENGTH_SHORT).show()
             }
 
