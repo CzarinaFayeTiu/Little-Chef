@@ -19,7 +19,7 @@ import java.io.InputStream
 import java.lang.Exception
 import java.net.URL
 
-class ConverterActivity : AppCompatActivity() {
+class ConverterActivity : DrawerBaseActivity() {
     var baseCurrency = "cup"
     var convertedToCurrency = "oz"
     var conversionRate = 0f

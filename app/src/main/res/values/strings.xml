@@ -2,6 +2,8 @@
     <string name="app_name">Little Chef</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="menu_drawer_open">Drawer Open</string>
+    <string name="menu_drawer_close">Drawer Close</string>
 
     <string name="notes">My Notes</string>
     <string name="notes_title">Notes Title</string>

@@ -14,7 +14,7 @@ import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.mobdeve.s12.avila.tiu.littlechef.databinding.ActivityTimerBinding
 
-class TimerActivity : AppCompatActivity() {
+class TimerActivity : DrawerBaseActivity()  {
     private var binding: ActivityTimerBinding? = null
     private var picker: MaterialTimePicker? = null
     private var calendar: Calendar? = null

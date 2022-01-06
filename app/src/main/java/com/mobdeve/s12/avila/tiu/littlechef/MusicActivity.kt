@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_music.*
 import com.mobdeve.s12.avila.tiu.littlechef.R
 
 
-class MusicActivity : AppCompatActivity() {
+class MusicActivity: DrawerBaseActivity() {
 
     var play: ImageView? = null
     var prev:ImageView? = null

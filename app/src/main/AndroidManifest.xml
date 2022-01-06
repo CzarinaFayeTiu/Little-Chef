@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LittleChef">
         <activity
+            android:name=".DrawerBaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".ConverterActivity"
             android:exported="false" />
         <activity
