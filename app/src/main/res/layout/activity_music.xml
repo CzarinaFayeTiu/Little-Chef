@@ -60,7 +60,7 @@
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:id="@+id/prev"
-                android:src="@drawable/previous_btn"/>
+                android:src="@drawable/ic_baseline_previous"/>
 
 
             <ImageView
@@ -74,7 +74,7 @@
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:id="@+id/next"
-                android:src="@drawable/next_btn"/>
+                android:src="@drawable/ic_baseline_next"/>
 
 
         </LinearLayout>
