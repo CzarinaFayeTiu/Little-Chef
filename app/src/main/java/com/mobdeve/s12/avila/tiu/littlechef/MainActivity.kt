@@ -20,14 +20,14 @@ import com.mobdeve.s12.avila.tiu.littlechef.DBHelper.MyDbHelper
 import com.mobdeve.s12.avila.tiu.littlechef.databinding.ActivityMainBinding
 import com.mobdeve.s12.avila.tiu.littlechef.models.RecipeModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DrawerBaseActivity() {
 
     //db helper
     lateinit var dbHelper: MyDbHelper
     //order by sor queries
     private val NEWEST_FIRST = "${Constants.C_ADDED_TIMESTAMP} DESC"
 
-    lateinit var toggle: ActionBarDrawerToggle
+    //lateinit var toggle: ActionBarDrawerToggle
     var binding: ActivityMainBinding? = null
 
 
@@ -42,9 +42,8 @@ class MainActivity : AppCompatActivity() {
         loadRecipes()
 
 
+/**
 
-
-        /**Drawer**/
         val drawerLayout:DrawerLayout = binding!!.drawerLayout
         val navView:NavigationView = binding!!.navView
 
@@ -75,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             true
-        }
+        }**/
     }
 
     private fun loadRecipes() {
@@ -123,13 +122,14 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+/**
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){
             return true
         }
 
         return super.onOptionsItemSelected(item)
-    }
+    }**/
 
 
 }

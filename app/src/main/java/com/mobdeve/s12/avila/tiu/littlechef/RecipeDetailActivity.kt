@@ -12,10 +12,10 @@ import com.mobdeve.s12.avila.tiu.littlechef.databinding.ActivityRecipeDetailBind
 import com.mobdeve.s12.avila.tiu.littlechef.models.RecipeModel
 import java.util.*
 
-class RecipeDetailActivity : AppCompatActivity() {
+class RecipeDetailActivity : DrawerBaseActivity() {
 
     //actionbar
-    private var actionBar:ActionBar? = null
+    //private var actionBar:ActionBar? = null
     //db helper
     private var dbHelper:MyDbHelper? = null
     private var recipeId:String? = null
@@ -27,11 +27,13 @@ class RecipeDetailActivity : AppCompatActivity() {
         binding =  ActivityRecipeDetailBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
+        /*
+
         //setting up actionbar
         actionBar = supportActionBar
         actionBar!!.title = "Recipe Details"
         actionBar!!.setDisplayShowHomeEnabled(true)
-        actionBar!!.setDisplayHomeAsUpEnabled(true)
+        actionBar!!.setDisplayHomeAsUpEnabled(true)*/
 
         //init db helper
         dbHelper = MyDbHelper(this)

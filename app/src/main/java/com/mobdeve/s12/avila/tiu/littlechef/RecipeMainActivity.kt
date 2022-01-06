@@ -25,7 +25,7 @@ import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.activity_recipe_main.*
 
-class RecipeMainActivity : AppCompatActivity() {
+class RecipeMainActivity : DrawerBaseActivity() {
 
     private val CAMERA_REQUEST_CODE = 100
     private val STORAGE_REQUEST_CODE = 101
@@ -48,7 +48,7 @@ class RecipeMainActivity : AppCompatActivity() {
 
     lateinit var dbHelper:MyDbHelper
 
-    lateinit var toggle: ActionBarDrawerToggle
+    //lateinit var toggle: ActionBarDrawerToggle
     var binding: ActivityRecipeMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,12 +56,13 @@ class RecipeMainActivity : AppCompatActivity() {
         binding =  ActivityRecipeMainBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
+        /*
         actionBar = supportActionBar
         //title of actionbar
         actionBar!!.title = "Add Record"
         //back button in actionbar
         actionBar!!.setDisplayHomeAsUpEnabled(true)
-        actionBar!!.setDisplayShowHomeEnabled(true)
+        actionBar!!.setDisplayShowHomeEnabled(true)*/
 
         //init db helper
         dbHelper = MyDbHelper(this)
@@ -84,40 +85,7 @@ class RecipeMainActivity : AppCompatActivity() {
             inputData()
         }
 
-        /**Drawer**/
-        val drawerLayout: DrawerLayout = binding!!.drawerLayout
-        val navView: NavigationView = binding!!.navView
 
-
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open,  R.string.close)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        //onclick listener for nav view
-
-        navView.setNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.nav_home -> {
-                    startActivity(Intent(applicationContext, MainActivity::class.java))
-                }
-                R.id.nav_notes -> {
-                    startActivity(Intent(applicationContext, NoteActivity::class.java))
-                }
-                R.id.nav_bookmarks -> Toast.makeText(applicationContext, "Clicked Bookmark", Toast.LENGTH_SHORT).show()
-                R.id.nav_converter -> Toast.makeText(applicationContext, "Clicked Converter", Toast.LENGTH_SHORT).show()
-                R.id.nav_timer -> {
-                    startActivity(Intent(applicationContext, TimerActivity::class.java))
-                }
-                R.id.nav_music -> {
-                    startActivity(Intent(applicationContext, MusicActivity::class.java))
-                }
-                R.id.nav_share -> Toast.makeText(applicationContext, "Clicked Share", Toast.LENGTH_SHORT).show()
-            }
-
-            true
-        }
     }
 
 
@@ -308,11 +276,4 @@ class RecipeMainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)){
-            return true
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
 }

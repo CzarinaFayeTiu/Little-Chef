@@ -45,7 +45,9 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
 
         navigationView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.nav_home -> Toast.makeText(applicationContext, "Clicked Home", Toast.LENGTH_SHORT).show()
+                R.id.nav_home -> {
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                }
                 R.id.nav_notes -> {
                     startActivity(Intent(applicationContext, NoteActivity::class.java))
                 }
