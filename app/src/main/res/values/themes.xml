@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.LittleChef" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.LittleChef" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/text</item>
@@ -20,5 +20,9 @@
         <!-- Hint text color -->
         <item name="android:textColorHint">@color/ColorGray</item>
 
+    </style>
+
+    <style name="IconStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
     </style>
 </resources>
