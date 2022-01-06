@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@color/background"
+    tools:context=".RecipeDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivRecipeImage"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/recipe" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="2">
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvRecipeName"
+                    android:text="Name"
+                    android:textSize="30dp"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvRecipeCategory"
+                    android:text="Category"
+                    android:textSize="10dp"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Ingredients"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text"
+                    android:layout_margin="20dp"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvRecipeIngredients"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text"
+                    android:layout_marginLeft="40dp"
+                    android:text="Ingredients Stuff" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Instructions"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text"
+                    android:layout_margin="20dp"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvRecipeInstructions"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text"
+                    android:layout_marginLeft="40dp"
+                    android:text="S A V E   M E" />
+            </TableRow>
+
+        </TableLayout>
+
+
+
+    </LinearLayout>
+
+</ScrollView>
