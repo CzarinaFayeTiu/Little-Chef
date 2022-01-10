@@ -2,11 +2,16 @@ package com.mobdeve.s12.avila.tiu.littlechef
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.mobdeve.s12.avila.tiu.littlechef.databinding.ActivityConverterBinding
+import com.mobdeve.s12.avila.tiu.littlechef.databinding.ActivityNotesBinding
 
-class NotesActivity : AppCompatActivity() {
+class NotesActivity : DrawerBaseActivity() {
+    var binding: ActivityNotesBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_notes)
+        binding = ActivityNotesBinding.inflate(layoutInflater)
+        setContentView(binding!!.root)
 
     }
 }

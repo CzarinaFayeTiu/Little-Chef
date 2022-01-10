@@ -16,15 +16,13 @@
         android:theme="@style/Theme.LittleChef">
         <activity
             android:name=".RecipeDetailActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".RecipeMainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ConverterActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".NoteActivity"
             android:exported="false" />
