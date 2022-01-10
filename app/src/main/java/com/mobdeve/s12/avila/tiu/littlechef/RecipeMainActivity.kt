@@ -27,9 +27,10 @@ import kotlinx.android.synthetic.main.activity_recipe_main.*
 
 class RecipeMainActivity : DrawerBaseActivity() {
 
+    //permission constants
     private val CAMERA_REQUEST_CODE = 100
     private val STORAGE_REQUEST_CODE = 101
-    //image pick constraints
+    //image pick constants
     private val IMAGE_PICK_CAMERA_CODE = 102
     private val IMAGE_PICK_GALLERY_CODE = 103
     //arrays of permissions
@@ -44,7 +45,7 @@ class RecipeMainActivity : DrawerBaseActivity() {
     private var link:String? = ""
 
     //action bar
-    private var actionBar:ActionBar? = null
+    private var actionBar: ActionBar? = null
 
     lateinit var dbHelper:MyDbHelper
 
@@ -56,7 +57,7 @@ class RecipeMainActivity : DrawerBaseActivity() {
         binding =  ActivityRecipeMainBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-        /*
+/*
         actionBar = supportActionBar
         //title of actionbar
         actionBar!!.title = "Add Record"
@@ -75,13 +76,13 @@ class RecipeMainActivity : DrawerBaseActivity() {
         storagePermissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
         //click imageview to pick image
-        ivProfile.setOnClickListener{
+        binding!!.ivProfile.setOnClickListener{
             //show image pick dialog
             imagePickDialog()
 
         }
         //click btnAdd to save record
-        btnAdd.setOnClickListener{
+        binding!!.btnAdd.setOnClickListener{
             inputData()
         }
 
@@ -241,39 +242,19 @@ class RecipeMainActivity : DrawerBaseActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        //image picked from camera or gallery will be received here
-        if (resultCode == Activity.RESULT_OK) {
-            //image is picked
-            if (requestCode == IMAGE_PICK_GALLERY_CODE) {
-                //picked from gallery
-                //crop image
-                CropImage.activity(data!!.data)
-                    .setGuidelines(CropImageView.Guidelines.ON)
-                    .setAspectRatio(1,1)
-                    .start(this)
-            } else if (requestCode == IMAGE_PICK_CAMERA_CODE) {
-                //picked from camera
-                //crop image
-                CropImage.activity(imageUri)
-                    .setGuidelines(CropImageView.Guidelines.ON)
-                    .setAspectRatio(1,1)
-                    .start(this)
-            } else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-                //cropped image received
-                val result = CropImage.getActivityResult(data)
-                if(resultCode == Activity.RESULT_OK) {
-                    val resultUri = result.uri
-                    imageUri = resultUri
-                    //set image
-                    ivProfile.setImageURI(resultUri)
-                } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                    //error
-                    val error = result.error
-                    Toast.makeText(this, ""+error, Toast.LENGTH_SHORT).show()
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK){
+            if (data != null){
+                if (requestCode == IMAGE_PICK_GALLERY_CODE) {
+                    imageUri = data.data
                 }
+
+                binding!!.ivProfile.setImageURI(imageUri)
+
+            }else{
+                binding!!.ivProfile.setImageURI(imageUri)
             }
         }
-        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }

@@ -42,8 +42,8 @@ class MainActivity : DrawerBaseActivity() {
         loadRecipes()
 
 
-/**
 
+/**
         val drawerLayout:DrawerLayout = binding!!.drawerLayout
         val navView:NavigationView = binding!!.navView
 

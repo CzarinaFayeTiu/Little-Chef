@@ -31,7 +31,7 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.HolderRecord>() {
         var ivImage: ImageView = itemView.findViewById(R.id.ivImage)
         var tvName: TextView = itemView.findViewById(R.id.tvName)
         var tvCategory: TextView = itemView.findViewById(R.id.tvCategory)
-        var btnMore: ImageButton = itemView.findViewById(R.id.btnMore)
+        //var btnMore: ImageButton = itemView.findViewById(R.id.btnMore)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderRecord {
@@ -83,10 +83,11 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.HolderRecord>() {
             context!!.startActivity(intent)
         }
 
+        /**
         //handle more button click: show delete/edit options
         holder.btnMore.setOnClickListener {
             //will implement later
-        }
+        }**/
     }
 
 
