@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/layoutNote"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,7 +14,7 @@
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="@dimen/_5sdp"
         android:layout_margin="@dimen/_5sdp"
-        app:cardBackgroundColor="@color/ColorLightBlack"
+        app:cardBackgroundColor="@color/background"
         android:padding="@dimen/_5sdp">
 
         <LinearLayout
@@ -41,7 +42,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textColor="@color/ColorWhite"/>
+                android:textColor="@color/ColorTextNote"/>
 
             <TextView
                 android:id="@+id/tvWebLink"
@@ -69,7 +70,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textColor="@color/ColorText"/>
+                android:textColor="@color/ColorTextNote"/>
 
             <TextView
                 android:id="@+id/tvDateTime"
@@ -83,7 +84,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textColor="@color/ColorText"/>
+                android:textColor="@color/ColorTextNote"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <ImageView
@@ -17,7 +17,7 @@
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/ColorWhite" />
+        app:tint="@color/ColorTextNote" />
 
     <ImageView
         android:id="@+id/imgDone"
@@ -29,7 +29,7 @@
         android:src="@drawable/ic_tick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/ColorWhite" />
+        app:tint="@color/ColorTextNote" />
 
 
     <EditText
@@ -43,7 +43,7 @@
         android:inputType="text"
         android:maxLines="1"
         android:padding="@dimen/_10sdp"
-        android:textColor="@color/ColorWhite"
+        android:textColor="@color/ColorTextNote"
         android:textColorHint="@color/ColorGray"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,8 +62,8 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:paddingStart="@dimen/_10sdp"
-        android:textColor="@color/ColorGray"
-        android:textColorHint="@color/ColorGray"
+        android:textColor="@color/ColorTextNote"
+        android:textColorHint="@color/ColorTextNote"
         android:textSize="@dimen/_8ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,7 @@
             android:layout_width="@dimen/_5sdp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/_5sdp"
-            android:background="@color/ColorBlue" />
+            android:background="@color/ColorBlueNote" />
 
         <EditText
             android:id="@+id/etNoteSubTitle"
@@ -97,7 +97,7 @@
             android:inputType="text"
             android:maxLines="1"
             android:padding="@dimen/_10sdp"
-            android:textColor="@color/ColorWhite"
+            android:textColor="@color/ColorTextNote"
             android:textColorHint="@color/ColorGray"
             android:textSize="@dimen/_10ssp" />
     </LinearLayout>
@@ -237,7 +237,7 @@
         android:hint="@string/notes_desc"
         android:inputType="textMultiLine"
         android:padding="@dimen/_10sdp"
-        android:textColor="@color/ColorWhite"
+        android:textColor="@color/ColorTextNote"
         android:textColorHint="@color/ColorGray"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintEnd_toEndOf="parent"

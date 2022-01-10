@@ -16,7 +16,7 @@
     <style name="ThemeOverlay.search" parent="Theme.LittleChef">
 
         <!-- Text color -->
-        <item name="android:editTextColor">@color/ColorWhite</item>
+        <item name="android:editTextColor">@color/ColorTextNote</item>
         <!-- Hint text color -->
         <item name="android:textColorHint">@color/ColorGray</item>
 
