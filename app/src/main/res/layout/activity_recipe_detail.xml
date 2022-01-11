@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     android:background="@color/background"
     tools:context=".RecipeDetailActivity">
 
@@ -60,7 +59,7 @@
                 <TextView
                     android:id="@+id/tvRecipeIngredients"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:textColor="@color/text"
                     android:layout_marginLeft="40dp"
                     android:text="Ingredients Stuff" />
@@ -75,13 +74,14 @@
                     android:layout_margin="20dp"/>
             </TableRow>
             <TableRow>
+
                 <TextView
                     android:id="@+id/tvRecipeInstructions"
+                    android:layout_width="341dp"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/text"
                     android:layout_marginLeft="40dp"
-                    android:text="S A V E   M E" />
+                    android:text="Instructions Stuff"
+                    android:textColor="@color/text" />
             </TableRow>
 
         </TableLayout>

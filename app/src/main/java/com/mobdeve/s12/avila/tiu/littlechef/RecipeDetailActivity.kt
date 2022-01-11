@@ -66,17 +66,6 @@ class RecipeDetailActivity : DrawerBaseActivity() {
                 val addedTime = cursor!!.getString(7)
                 val updatedTime = cursor!!.getString(8)
 
-                //convert timestamp
-                /* for API 24 only (we're at API 23)
-                val calendar1 = Calendar.getInstance(Locale.getDefault())
-                calendar1.timeInMillis = addedTime.toLong()
-                val timeAdded = android.text.format.DateFormat.format("dd/MM/yyyy hh:mm aa", calendar1)
-
-                val calendar2 = Calendar.getInstance(Locale.getDefault())
-                calendar1.timeInMillis = updatedTime.toLong()
-                val timeUpdated = android.text.format.DateFormat.format("dd/MM/yyyy hh:mm aa", calendar1)
-                */
-
                 //set data
                 binding!!.tvRecipeName.text = name
                 binding!!.tvRecipeCategory.text = category
@@ -85,6 +74,21 @@ class RecipeDetailActivity : DrawerBaseActivity() {
                 if (image == "null") {
                     //no image in record, set default
                     binding!!.ivRecipeImage.setImageResource(R.drawable.littlechef_logo)
+                } else if (image == "recipe1") {
+                    //recipe 1 - chocolate cake
+                    binding!!.ivRecipeImage.setImageResource(R.drawable.recipe1)
+                } else if (image == "recipe2") {
+                    //recipe 2 - chicken adobo
+                    binding!!.ivRecipeImage.setImageResource(R.drawable.recipe2)
+                }else if (image == "recipe3") {
+                    //recipe 3 - mango float
+                    binding!!.ivRecipeImage.setImageResource(R.drawable.recipe3)
+                }else if (image == "recipe4") {
+                    //recipe 4 - sinigang
+                    binding!!.ivRecipeImage.setImageResource(R.drawable.recipe4)
+                }else if (image == "recipe5") {
+                    //recipe 5 - chocolate cake
+                    binding!!.ivRecipeImage.setImageResource(R.drawable.recipe5)
                 } else {
                     //have image in record
                     binding!!.ivRecipeImage.setImageURI(Uri.parse(image))

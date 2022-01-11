@@ -1,6 +1,7 @@
 package com.mobdeve.s12.avila.tiu.littlechef
 
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,14 +9,18 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 
 open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var toggle: ActionBarDrawerToggle
+    var initRecipes: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,6 +85,7 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
 
         return super.onOptionsItemSelected(item)
     }
+
 
 
 }

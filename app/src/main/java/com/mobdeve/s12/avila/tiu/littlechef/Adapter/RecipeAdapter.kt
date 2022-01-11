@@ -69,7 +69,22 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.HolderRecord>() {
         if (image == "null") {
             //no image in record, set default
             holder.ivImage.setImageResource(R.drawable.littlechef_logo)
-        } else {
+        } else if (image == "recipe1") {
+            //no image in record, set default
+            holder.ivImage.setImageResource(R.drawable.recipe1)
+        } else if (image == "recipe2") {
+            //no image in record, set default
+            holder.ivImage.setImageResource(R.drawable.recipe2)
+        }else if (image == "recipe3") {
+            //no image in record, set default
+            holder.ivImage.setImageResource(R.drawable.recipe3)
+        } else if (image == "recipe4") {
+            //no image in record, set default
+            holder.ivImage.setImageResource(R.drawable.recipe4)
+        } else if (image == "recipe5") {
+            //no image in record, set default
+            holder.ivImage.setImageResource(R.drawable.recipe5)
+        }else {
             //have image in record
             holder.ivImage.setImageURI(Uri.parse(image))
         }
