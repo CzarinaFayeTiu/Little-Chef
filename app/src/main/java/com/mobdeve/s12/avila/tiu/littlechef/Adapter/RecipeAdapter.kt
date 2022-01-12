@@ -1,5 +1,6 @@
 package com.mobdeve.s12.avila.tiu.littlechef.Adapter
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -9,9 +10,10 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.mobdeve.s12.avila.tiu.littlechef.R
-import com.mobdeve.s12.avila.tiu.littlechef.RecipeDetailActivity
+import com.mobdeve.s12.avila.tiu.littlechef.*
+import com.mobdeve.s12.avila.tiu.littlechef.DBHelper.MyDbHelper
 import com.mobdeve.s12.avila.tiu.littlechef.models.RecipeModel
 
 //Adapter class for Recycler View
@@ -19,10 +21,13 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.HolderRecord>() {
 
     private var context: Context? = null
     private var recipeList:ArrayList<RecipeModel>? = null
+    lateinit var dbHelper:MyDbHelper
 
     constructor(context: Context?, recipeList: ArrayList<RecipeModel>?) : this() {
         this.context = context
         this.recipeList = recipeList
+
+        dbHelper = MyDbHelper(context)
     }
 
     inner class HolderRecord(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -31,7 +36,7 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.HolderRecord>() {
         var ivImage: ImageView = itemView.findViewById(R.id.ivImage)
         var tvName: TextView = itemView.findViewById(R.id.tvName)
         var tvCategory: TextView = itemView.findViewById(R.id.tvCategory)
-        //var btnMore: ImageButton = itemView.findViewById(R.id.btnMore)
+        var btnBookmark: ImageButton = itemView.findViewById(R.id.btnBookmark)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderRecord {
@@ -59,6 +64,7 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.HolderRecord>() {
         val instructions = model.instructions
         val image = model.image
         val link = model.link
+        val bookmark = model.bookmark
         val addedTime = model.addedTime
         val updatedTime = model.updatedTime
 
@@ -70,19 +76,19 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.HolderRecord>() {
             //no image in record, set default
             holder.ivImage.setImageResource(R.drawable.littlechef_logo)
         } else if (image == "recipe1") {
-            //no image in record, set default
+            //set recipe1 image
             holder.ivImage.setImageResource(R.drawable.recipe1)
         } else if (image == "recipe2") {
-            //no image in record, set default
+            //set recipe1 image
             holder.ivImage.setImageResource(R.drawable.recipe2)
         }else if (image == "recipe3") {
-            //no image in record, set default
+            //set recipe1 image
             holder.ivImage.setImageResource(R.drawable.recipe3)
         } else if (image == "recipe4") {
-            //no image in record, set default
+            //set recipe1 image
             holder.ivImage.setImageResource(R.drawable.recipe4)
         } else if (image == "recipe5") {
-            //no image in record, set default
+            //set recipe1 image
             holder.ivImage.setImageResource(R.drawable.recipe5)
         }else {
             //have image in record
@@ -98,12 +104,19 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.HolderRecord>() {
             context!!.startActivity(intent)
         }
 
-        /**
-        //handle more button click: show delete/edit options
-        holder.btnMore.setOnClickListener {
+        //handle bookmark click
+        holder.btnBookmark.setOnClickListener {
             //will implement later
-        }**/
+            Toast.makeText(context,"Bookmarked $name", Toast.LENGTH_SHORT).show()
+
+            //holder.btnBookmark.isSelected = !holder.btnBookmark.isSelected
+            dbHelper?.updateRecord(id, "bookmarked")
+            //refresh record by calling activity's onResume method
+            (context as MainActivity)!!.onResume()
+            //(context as BookmarksActivity)!!.onResume()
+        }
     }
+
 
 
 

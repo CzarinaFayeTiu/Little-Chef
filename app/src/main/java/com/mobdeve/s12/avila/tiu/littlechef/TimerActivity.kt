@@ -82,6 +82,9 @@ class TimerActivity : DrawerBaseActivity()  {
             calendar!![Calendar.SECOND] = 0
             calendar!![Calendar.MILLISECOND] = 0
         }
+
+
+
     }
 
     private fun createNotificationChannel() {

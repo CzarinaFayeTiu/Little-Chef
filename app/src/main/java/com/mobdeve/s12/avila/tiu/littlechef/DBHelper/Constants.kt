@@ -14,6 +14,7 @@ object Constants {
     const val C_INSTRUCTIONS = "INSTRUCTIONS"
     const val C_IMAGE = "IMAGE"
     const val C_LINK = "LINK"
+    const val C_BOOKMARK = "BOOKMARK"
     const val C_ADDED_TIMESTAMP = "ADDED_TIME_STAMP"
     const val C_UPDATED_TIMESTAMP = "UPDATED_TIME_STAMP"
 
@@ -27,6 +28,7 @@ object Constants {
                     C_INSTRUCTIONS + " TEXT," +
                     C_IMAGE + " TEXT," +
                     C_LINK + " TEXT," +
+                    C_BOOKMARK + " TEXT," +
                     C_ADDED_TIMESTAMP + " TEXT," +
                     C_UPDATED_TIMESTAMP + " TEXT" +
                     ")"

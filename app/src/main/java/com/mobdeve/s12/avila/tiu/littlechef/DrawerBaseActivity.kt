@@ -25,6 +25,7 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drawer_base)
+
     }
 
     override fun setContentView(view: View?) {
@@ -38,6 +39,7 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
         //toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
 
         val navigationView: NavigationView = drawerLayout.findViewById(R.id.nav_view)
+        navigationView.setItemIconTintList(null)
         //navigationView.setNavigationItemSelectedListener(this)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar,
@@ -56,7 +58,9 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
                 R.id.nav_notes -> {
                     startActivity(Intent(applicationContext, NoteActivity::class.java))
                 }
-                R.id.nav_bookmarks -> Toast.makeText(applicationContext, "Clicked Bookmark", Toast.LENGTH_SHORT).show()
+                R.id.nav_bookmarks -> {
+                    startActivity(Intent(applicationContext, BookmarksActivity::class.java))
+                }
                 R.id.nav_converter-> {
                     startActivity(Intent(applicationContext, ConverterActivity::class.java))
                 }

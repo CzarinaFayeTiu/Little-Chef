@@ -7,7 +7,7 @@
     android:layout_marginTop="50dp"
     android:layout_marginStart="16dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/littlechef_logo"/>
@@ -19,12 +19,14 @@
         android:paddingTop="8dp"
         android:textSize="20dp"
         android:text="Little Chef"
+        android:textColor="@color/text"
         android:textStyle="bold"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/motto"
         android:paddingTop="8dp"
+        android:textColor="@color/ColorGray"
         android:text="Where you can reach for the stars"/>
     <View
         android:layout_width="match_parent"

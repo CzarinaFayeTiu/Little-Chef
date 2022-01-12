@@ -11,6 +11,7 @@ data class RecipeModel(
     var instructions: String,
     var image:String,
     var link: String,
+    var bookmark: String,
     var addedTime:String,
     var updatedTime:String
 )

@@ -60,7 +60,6 @@ class MainActivity : DrawerBaseActivity() {
     }
 
 
-
     private fun loadRecipes() {
         val adapterRecipe = RecipeAdapter(this, dbHelper.getAllRecipes(NEWEST_FIRST))
 
@@ -73,7 +72,7 @@ class MainActivity : DrawerBaseActivity() {
         binding!!.rvRecipes.adapter = adapterRecipe
     }
 
-    override fun onResume() {
+    public override fun onResume() {
         super.onResume()
         loadRecipes()
     }
@@ -134,6 +133,7 @@ class MainActivity : DrawerBaseActivity() {
                     "7.    Frost with your favorite frosting and\tenjoy!",
             "recipe1",
             "https://thestayathomechef.com/the-most-amazing-chocolate-cake/",
+            "null",
             "1",
             "1"
         )
@@ -162,6 +162,7 @@ class MainActivity : DrawerBaseActivity() {
                     "7.    Put-in the sugar, and salt. Stir and turn the heat off. Serve hot. Share and Enjoy!",
             "recipe2",
             "https://panlasangpinoy.com/filipino-chicken-adobo-recipe/",
+            "null",
             "1",
             "1"
         )
@@ -186,6 +187,7 @@ class MainActivity : DrawerBaseActivity() {
                     "8.    Serve with your favorite dessert wine, cocktail, coffee, or tea.",
             "recipe3",
             "https://tasty.co/recipe/mango-float",
+            "null",
             "1",
             "1"
         )
@@ -217,6 +219,7 @@ class MainActivity : DrawerBaseActivity() {
                     "10.    Serve hot. Share and enjoy!",
             "recipe4",
             "https://panlasangpinoy.com/pork-sinigang-na-baboy-recipe/",
+            "bookmarked",
             "1",
             "1"
         )
@@ -262,6 +265,7 @@ class MainActivity : DrawerBaseActivity() {
                     "  10.    Remove from pan and serve with whipped cream (optional) and remaining blueberry sauce.",
             "recipe5",
             "https://www.thereciperebel.com/blueberry-cheesecake/",
+            "bookmarked",
             "1",
             "1"
         )

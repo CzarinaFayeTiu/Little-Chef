@@ -43,6 +43,7 @@ class RecipeMainActivity : DrawerBaseActivity() {
     private var ingredients:String? = ""
     private var instructions:String? = ""
     private var link:String? = ""
+    private var bookmark:String? = ""
 
     //action bar
     private var actionBar: ActionBar? = null
@@ -97,6 +98,7 @@ class RecipeMainActivity : DrawerBaseActivity() {
         ingredients = "" + edIngredients.text.toString().trim()
         instructions = "" + edInstructions.text.toString().trim()
         link = "" + edLink.text.toString().trim()
+        bookmark = "" + edLink.text.toString().trim()
 
         //save data to db
         val timestamp = System.currentTimeMillis()
@@ -107,6 +109,7 @@ class RecipeMainActivity : DrawerBaseActivity() {
             ""+instructions,
             ""+imageUri,
             ""+link,
+            ""+bookmark,
             ""+timestamp,
             ""+timestamp
         )
