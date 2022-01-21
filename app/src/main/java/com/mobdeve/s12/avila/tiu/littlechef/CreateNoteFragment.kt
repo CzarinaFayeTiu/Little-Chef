@@ -122,7 +122,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 updateNote()
             }else{
                 saveNote()
-            } 
+            }
         }
 
         imgBack.setOnClickListener {

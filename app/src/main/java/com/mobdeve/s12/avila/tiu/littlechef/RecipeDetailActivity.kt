@@ -4,12 +4,15 @@ import android.icu.util.Calendar
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.mobdeve.s12.avila.tiu.littlechef.DBHelper.Constants
 import com.mobdeve.s12.avila.tiu.littlechef.DBHelper.MyDbHelper
 import com.mobdeve.s12.avila.tiu.littlechef.databinding.ActivityMainBinding
 import com.mobdeve.s12.avila.tiu.littlechef.databinding.ActivityRecipeDetailBinding
 import com.mobdeve.s12.avila.tiu.littlechef.models.RecipeModel
+import kotlinx.android.synthetic.main.activity_recipe_detail.*
 import java.util.*
 
 class RecipeDetailActivity : DrawerBaseActivity() {
@@ -19,7 +22,7 @@ class RecipeDetailActivity : DrawerBaseActivity() {
     //db helper
     private var dbHelper:MyDbHelper? = null
     private var recipeId:String? = null
-
+    lateinit var tts:TextToSpeech
     var binding: ActivityRecipeDetailBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +46,35 @@ class RecipeDetailActivity : DrawerBaseActivity() {
         recipeId = intent.getStringExtra("RECORD_ID")
 
         showRecordDetails()
+
+        tts = TextToSpeech(applicationContext, TextToSpeech.OnInitListener {
+                status ->
+            if(status != TextToSpeech.ERROR){
+                //set language
+                tts.language = Locale.UK
+            }
+        })
+
+        var speakBtn = binding!!.speakBtn
+
+        speakBtn.setOnClickListener {
+            //get edit text
+            val toSpeak = binding!!.tvRecipeInstructions.text.toString()
+            if(toSpeak == ""){
+                //if no text is written
+                Toast.makeText(this, "Enter Text", Toast.LENGTH_SHORT).show()
+            }else{
+                tts.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null)
+            }
+        }
+        stopBtn.setOnClickListener {
+            if(tts.isSpeaking){
+                tts.stop()
+            }else{
+                Toast.makeText(this, "Not Speaking", Toast.LENGTH_SHORT).show()
+            }
+        }
+
 
     }
 

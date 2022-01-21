@@ -47,14 +47,16 @@
                     android:textColor="@color/text"/>
             </TableRow>
             <TableRow>
+
                 <TextView
-                    android:text="Ingredients"
-                    android:textSize="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Ingredients"
                     android:textColor="@color/text"
-                    android:layout_margin="20dp"/>
+                    android:textSize="20dp" />
             </TableRow>
+
             <TableRow>
                 <TextView
                     android:id="@+id/tvRecipeIngredients"
@@ -72,6 +74,27 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/text"
                     android:layout_margin="20dp"/>
+            </TableRow>
+            <TableRow>
+
+                <Button
+                    android:id="@+id/speakBtn"
+                    android:layout_width="71dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_baseline_volume_up_24"
+                    android:drawablePadding="5dp"
+                    android:gravity="start"
+                    android:text="Speak" />
+            </TableRow>
+            <TableRow>
+                <Button
+                    android:id="@+id/stopBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stop"
+                    android:drawableLeft="@drawable/ic_baseline_volume_off_24"
+                    android:drawablePadding="5dp"
+                    android:gravity="start"/>
             </TableRow>
             <TableRow>
 
