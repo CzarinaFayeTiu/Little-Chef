@@ -25,18 +25,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
         android:src="@drawable/ic_tick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/ColorTextNote" />
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/imgBack"
+    android:orientation="horizontal"
+    android:weightSum="10"
+    android:id="@+id/titleShare"
+    android:layout_margin="@dimen/_10sdp">
     <EditText
         android:id="@+id/etNoteTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
+
         android:background="@null"
         android:ellipsize="end"
         android:hint="@string/notes_title"
@@ -46,9 +52,17 @@
         android:textColor="@color/ColorTextNote"
         android:textColorHint="@color/ColorGray"
         android:textSize="@dimen/_14ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgBack" />
+        android:layout_weight="9" />
+    <ImageView
+        android:id="@+id/imgShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_share_24"
+        app:tint="@color/ColorTextNote"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"/>
+
+</LinearLayout>
 
 
     <TextView
@@ -67,7 +81,7 @@
         android:textSize="@dimen/_8ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etNoteTitle" />
+        app:layout_constraintTop_toBottomOf="@id/titleShare" />
 
     <LinearLayout
         android:id="@+id/l1"
@@ -101,34 +115,34 @@
             android:textColorHint="@color/ColorGray"
             android:textSize="@dimen/_10ssp" />
     </LinearLayout>
-
     <RelativeLayout
         android:id="@+id/layoutImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/l1">
 
-
-
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgNote"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_300sdp"
-            android:visibility="gone"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp" />
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="1dp"
+            android:scaleType="centerCrop"
+            app:strokeColor="@color/black"
+            android:layout_centerInParent="true"/>
 
         <ImageView
             android:id="@+id/imgDelete"
+            android:visibility="gone"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
-            android:layout_marginEnd="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_alignParentEnd="true"
-            android:visibility="gone"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
             android:src="@drawable/ic_delete" />
 
 
@@ -160,47 +174,52 @@
                 android:background="@null"
                 android:hint="@string/web_url"
                 android:inputType="textMultiLine"
-                android:padding="@dimen/_10sdp"
+                android:padding="2dp"
                 android:text="http://"
                 android:textColor="@color/ColorWhite"
                 android:textColorHint="@color/ColorGray"
                 android:textSize="@dimen/_12ssp" />
             <ImageView
                 android:id="@+id/imgUrlDelete"
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:visibility="gone"
-                android:src="@drawable/ic_baseline_cancel_24" />
+                android:layout_gravity="top|end"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/ColorWhite"/>
         </LinearLayout>
 
 
 
         <LinearLayout
+            android:id="@+id/btnOkCancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="2dp"
             android:gravity="end"
             android:orientation="horizontal">
 
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="30dp"
+                android:padding="0dp"
                 android:background="@color/colorAccent"
-                android:text="@string/cancel"
-                android:textSize="@dimen/_12ssp"
+                android:text="Cancel"
+                android:textSize="12sp"
                 android:textAllCaps="false"
                 android:textColor="@color/ColorWhite"
                 android:id="@+id/btnCancel"/>
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="30dp"
+                android:padding="0dp"
                 android:background="@color/colorAccent"
                 android:text="@string/ok"
                 android:textAllCaps="false"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="12sp"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:textColor="@color/ColorWhite"
                 android:id="@+id/btnOk"/>
@@ -216,10 +235,8 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
         android:ellipsize="end"
         android:visibility="gone"
-        android:padding="@dimen/_10sdp"
         android:textColor="@color/ColorGray"
         android:textColorHint="@color/ColorGray"
         android:textSize="@dimen/_12ssp"
@@ -227,7 +244,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutWebUrl" />
-
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:fillViewport="true"
+    app:layout_constraintTop_toBottomOf="@id/tvWebLink">
     <EditText
         android:id="@+id/etNoteDesc"
         android:layout_width="match_parent"
@@ -236,13 +257,17 @@
         android:background="@null"
         android:hint="@string/notes_desc"
         android:inputType="textMultiLine"
+        android:maxLines="15"
+        android:scrollbars="vertical"
         android:padding="@dimen/_10sdp"
         android:textColor="@color/ColorTextNote"
         android:textColorHint="@color/ColorGray"
         android:textSize="@dimen/_12ssp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvWebLink" />
+         />
+</androidx.core.widget.NestedScrollView>
 
     <FrameLayout
         android:layout_width="match_parent"

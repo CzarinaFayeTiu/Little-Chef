@@ -59,20 +59,6 @@
                 android:autoLink="web" />
 
             <TextView
-                android:id="@+id/tvDesc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/_11ssp"
-                android:text="@string/notes"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingTop="@dimen/_5sdp"
-                android:paddingBottom="@dimen/_5sdp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:textColor="@color/ColorTextNote"/>
-
-            <TextView
                 android:id="@+id/tvDateTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Little Chef</string>
+    <string name="facebook_app_id">2780472732253927</string>
+    <string name="fb_login_protocol_scheme">fb2780472732253927</string>
+
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="menu_drawer_open">Drawer Open</string>

@@ -80,4 +80,9 @@ dependencies {
 
     //image
     implementation 'com.google.android.material:material:1.2.1'
+
+    //facebook
+    implementation 'com.facebook.android:facebook-share:latest.release'
+    implementation 'com.facebook.android:facebook-android-sdk:latest.release'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

@@ -34,7 +34,6 @@ class NotesAdapter() :
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
 
         holder.itemView.tvTitle.text = arrList[position].title
-        holder.itemView.tvDesc.text = arrList[position].noteText
         holder.itemView.tvDateTime.text = arrList[position].dateTime
 
         if (arrList[position].color != null){

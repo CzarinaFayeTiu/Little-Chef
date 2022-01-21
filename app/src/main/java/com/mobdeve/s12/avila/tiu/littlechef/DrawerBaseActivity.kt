@@ -70,7 +70,9 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
                 R.id.nav_music -> {
                     startActivity(Intent(applicationContext, MusicActivity::class.java))
                 }
-                R.id.nav_share -> Toast.makeText(applicationContext, "Clicked Share", Toast.LENGTH_SHORT).show()
+                R.id.nav_share -> {
+                    startActivity(Intent(applicationContext, FacebookActivity::class.java))
+                }
             }
 
             true

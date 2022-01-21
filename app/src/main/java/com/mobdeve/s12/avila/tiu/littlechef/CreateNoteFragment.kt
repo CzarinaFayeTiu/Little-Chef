@@ -8,15 +8,22 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.facebook.CallbackManager
+import com.facebook.share.model.ShareHashtag
+import com.facebook.share.model.ShareLinkContent
+import com.facebook.share.widget.ShareDialog
 import kotlinx.android.synthetic.main.fragment_create_note.*
 import kotlinx.coroutines.launch
 import pub.devrel.easypermissions.AppSettingsDialog
@@ -26,13 +33,14 @@ import java.util.*
 
 class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,EasyPermissions.RationaleCallbacks{
 
-    var selectedColor = "#171C26"
+    var selectedColor = "#F8FF97"
     var currentDate:String? = null
     private var READ_STORAGE_PERM = 123
     private var REQUEST_CODE_IMAGE = 456
     private var selectedImagePath = ""
     private var webLink = ""
     private var noteId = -1
+    private var callbackManager: CallbackManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,7 +122,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 updateNote()
             }else{
                 saveNote()
-            }
+            } 
         }
 
         imgBack.setOnClickListener {
@@ -162,6 +170,10 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         tvWebLink.setOnClickListener {
             var intent = Intent(Intent.ACTION_VIEW,Uri.parse(etWebLink.text.toString()))
             startActivity(intent)
+        }
+
+        imgShare.setOnClickListener {
+            shareNote()
         }
 
     }
@@ -230,6 +242,54 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 }
             }
         }
+
+    }
+
+    private fun shareNote(){
+
+            launch {
+                var notes = Notes()
+                var title= etNoteTitle.text.toString()
+                var subTitle = etNoteSubTitle.text.toString()
+                var noteText = etNoteDesc.text.toString()
+                var dateTime = currentDate
+                var imgPath = selectedImagePath
+                var webLink = webLink
+
+                var quote = "Recipe Title: $title \nSub Title: $subTitle\nIngredients and Instructions:\n $noteText \n\nCreated on: $dateTime"
+
+                Log.d("FACEBOOK", "THIS IS THE VAR QUOTE \n$quote")
+                Log.d("FACEBOOK", "THIS IS THE IMGPATH: $imgPath")
+                Log.d("FACEBOOK", "THIS IS THE webLink: $webLink")
+
+                callbackManager = CallbackManager.Factory.create()
+
+                var hashtag = ShareHashtag.Builder()
+                    .setHashtag("#LittleChef")
+                    .build()
+
+                var shareLinkContent:ShareLinkContent
+                if(webLink.trim().isNotEmpty()) {
+                    shareLinkContent = ShareLinkContent.Builder()
+                        .setQuote(quote)
+                        .setShareHashtag(hashtag)
+                        .setContentUrl(Uri.parse("$webLink"))
+                        .build()
+                    Log.d("FACEBOOK", "THERE IS A WEB LINK")
+                }else{
+                    shareLinkContent = ShareLinkContent.Builder()
+                        .setQuote(quote)
+                        .setShareHashtag(hashtag)
+                        .setContentUrl(Uri.parse("www.littlechef-mobdeve.com"))
+                        .build()
+                    Log.d("FACEBOOK", "THERE IS NO LINK")
+                }
+
+
+                ShareDialog.show(this@CreateNoteFragment, shareLinkContent)
+
+            }
+
 
     }
 
