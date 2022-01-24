@@ -132,7 +132,7 @@ class MainActivity : DrawerBaseActivity() {
                     "6.    Cool on wire racks for 15 minutes and\tthen turn out the cakes onto the racks and allow to cool completely.\n\n" +
                     "7.    Frost with your favorite frosting and\tenjoy!",
             "recipe1",
-            "https://thestayathomechef.com/the-most-amazing-chocolate-cake/",
+            "dsJtgmAhFF4",
             "null",
             "1",
             "1"
@@ -161,7 +161,7 @@ class MainActivity : DrawerBaseActivity() {
                     "6.    Add vinegar. Stir and cook for 10 minutes.\n" +
                     "7.    Put-in the sugar, and salt. Stir and turn the heat off. Serve hot. Share and Enjoy!",
             "recipe2",
-            "https://panlasangpinoy.com/filipino-chicken-adobo-recipe/",
+            "mtyULaM6RfQ",
             "null",
             "1",
             "1"
@@ -171,22 +171,17 @@ class MainActivity : DrawerBaseActivity() {
         dbHelper.insertRecord(
             "Mango Float",
             "Dessert",
-            "5  mangoes, ripe but not soft\n" +
-                    "4  cups heavy cream(960 mL), or canned all-purpose cream, chilled overnight\n" +
-                    "1  can condensed milk, chilled overnight\n" +
-                    "2  teaspoons vanilla extract\n" +
-                    "½  teaspoon kosher salt\n" +
-                    "21  crackers graham cracker, plus more, crushed, for topping",
-            "1.    Peel the mangoes and cut the lobes off as close to the pit as possible. Thinly slice half of the mango lobes into ¹⁄₁₆-inch (15 mm)-thick slices, keeping the slices intact and transferring to a tray or plate. Cover and refrigerate until ready to assemble. Cut the remaining mango into ½-inch (1.24 cm) cubes. Transfer to a bowl, cover, and refrigerate until ready to assemble.\n" +
-                    "2.    Add 2 cups of cream to a chilled large bowl and use an electric hand mixer to beat on medium-high speed until stiff peaks form, 3–5 minutes. Add the remaining 2 cups of cream and beat again until stiff peaks form, 3–5 minutes more.\n" +
-                    "3.    Add half of the condensed milk and beat until fully incorporated. Add the remaining condensed milk, vanilla, and salt and beat until fully incorporated and stiff peaks form, 4–7 minutes. Give the mixture a final stir with a rubber spatula.\n" +
-                    "4.    Line a chilled 7 x 11 (17 x 27 cm) -inch glass dish with parchment paper, leaving overhang on all sides.\n" +
-                    "5.    Cover the bottom of the dish with a single layer of graham crackers, breaking to fill in any gaps as necessary. Spread 2–3 cups (480-720 ml) of the whipped cream mixture evenly over the graham crackers, all the way to the edges and corners of the dish. Top with ½ of the diced mango. Repeat to make another layer. For the final layer, arrange the graham crackers over the diced mango and top with 2–3 cups of whipped cream. Arrange the thinly sliced mango decoratively on top. Sprinkle crushed graham crackers around the edge of the float.\n" +
-                    "6.    Cover the mango float in plastic wrap and refrigerate for 4–6 hours, until the cream sets and the graham crackers soften and absorb some moisture. Transfer the float to the freezer for 8 hours, or overnight.\n" +
-                    "7.    Remove the float from the freezer and use the parchment paper to lift out of the dish. Let thaw for 5–10 minutes before slicing.\n" +
-                    "8.    Serve with your favorite dessert wine, cocktail, coffee, or tea.",
+            "3  ripe medium size mangoes, slice into strips \n" +
+                    "2  (200g)pack Graham crackers\n" +
+                    "2  (250ml) all-purpose cream, chilled overnight\n" +
+                    "1  (380g) big can condensed milk",
+            "1.    In a bowl beat using hand mixer 2 pack(250ml) all-purpose cream(chilled overnight) in high speed. When it double its size add condensed milk and beat until well combined.  Set aside or let it chill in the ref until ready to use.\n" +
+                    "2.    Arrange graham crackers in a deep container.  Fill gaps with bits and pieces of graham crackers.\n" +
+                    "Put cream on top of graham and spread evenly.  Add strips of mangoes on top of the cream.\n" +
+                    "3.    Add another layer of graham crackers, spread cream on top of graham and strips of mangoes on top of cream.  Repeat process until you reach desired number of layers.  I made 4 layers of graham crackers, cream and mangoes on this recipe.\n" +
+                    "4.    Cover and chill in the refrigerator overnight to let the graham soaked into the cream.  The result is a cake-like texture and cream is so smooth and creamy.",
             "recipe3",
-            "https://tasty.co/recipe/mango-float",
+            "JS6atiDtmlI",
             "null",
             "1",
             "1"
@@ -218,7 +213,7 @@ class MainActivity : DrawerBaseActivity() {
                     "9.    Put-in the spinach, turn off the heat, and cover the pot. Let the spinach cook using the remaining heat in the pot.\n" +
                     "10.    Serve hot. Share and enjoy!",
             "recipe4",
-            "https://panlasangpinoy.com/pork-sinigang-na-baboy-recipe/",
+            "t-beBtUZz3E",
             "bookmarked",
             "1",
             "1"
@@ -229,42 +224,27 @@ class MainActivity : DrawerBaseActivity() {
             "Blueberry Cheesecake",
             "Dessert",
             "Blueberry Sauce\n" +
-                    "  3  cups fresh or frozen blueberries\n" +
-                    "  1/4  cup granulated sugar (50g)\n" +
-                    "  1/4  cup water\n" +
-                    "  1  tablespoon corn starch\n" +
-                    "Crust\n" +
-                    "  2  1/2 cups graham cracker crumbs\n" +
-                    "  1/3  cup melted butter\n" +
-                    "  1  tablespoon granulated sugar\n" +
-                    "Filling\n" +
-                    "  3  packages cream cheese (24 oz or 750g total), room temperature\n" +
-                    "  2  cups sour cream or Greek yogurt\n" +
-                    "  1  1/2 cups granulated sugar (300g)\n" +
-                    "  4  large eggs\n" +
-                    "  1  tablespoon vanilla" +
-                    "  1   pack sinigang mix good for 2 liters water",
-            "Blueberry Sauce\n" +
-                    "  1.    In a medium pan, combine blueberries and sugar. Whisk together water and corn starch and add to the pan.\n" +
-                    "  2.    Cook over medium heat, stirring often, until bubbly and thickened, about 5-8 minutes.\n" +
-                    "  3.    Set aside to cool to room temperature (the fridge makes this go much quicker)\n" +
-                    "Crust\n" +
-                    "  1.    Preheat oven to 325 degrees F and line a 9\" Springform pan with parchment paper (pinch it in between the bottom and the sides)\n" +
-                    "  2.    Stir together graham cracker crumbs, butter and sugar and press into the pan and about 1/2\" up the sides.\n" +
-                    "  3.    Bake for 10-12 minutes, just until dry. Remove to cool and reduce oven temperature to 275 degrees F.\n" +
-                    "Filling\n" +
-                    "  1.    In a large bowl, beat cream cheese with an electric mixer until smooth.\n" +
-                    "  2.    Add sour cream, sugar, eggs and vanilla and beat until smooth.\n" +
-                    "  3.    Pour half of the filling into another bowl. Stir in ½ cup blueberry sauce.\n" +
-                    "  4.    Pour blueberry cheesecake filling into prepared crust.\n" +
-                    "  5.    Carefully pour plain cheesecake filling over the blueberry, drizzling back and forth to cover in an even layer. Spread to smooth.\n" +
-                    "  6.    Drop teaspoons of blueberry sauce over the top of the cheesecake and gently swirl. Reserve remaining sauce for serving.\n" +
-                    "  7.    Bake at 275 degrees F for 1.5-2 hours, until the outer 2\" are set and the center is still somewhat jiggly.\n" +
-                    "  8.    Turn oven off and let sit in warm oven for 1 more hour.\n" +
-                    "  9.    Remove from oven and set on the counter to cool to room temperature. Refrigerate at least 8 hours or overnight before slicing.\n" +
-                    "  10.    Remove from pan and serve with whipped cream (optional) and remaining blueberry sauce.",
+                    "  1  cup crushed graham crackers\n" +
+                    "  1/4  cup butter, melted\n" +
+                    "  2  tablespoons white sugar\n" +
+                    "  250  grams cream cheese, at room temperature\n" +
+                    "  1/2  cup sugar\n" +
+                    "  2  eggs\n" +
+                    "  1/2  cup heavy cream\n" +
+                    "  juice from half a lemon\n" +
+                    "  1  tablespoon all-purpose flour\n" +
+                    "  ready-made blueberry filling (for the topping)",
+            "1.    Make the crust: Combine crushed graham, sugar, and butter in a bowl. Transfer to a greased and lined 6-inch round springform pan. Pat down evenly to form the crust then chill in the refrigerator.\n" +
+                    " \n" +
+                    "2.    Make the filling: Beat cream cheese in a bowl and add sugar. Add eggs one at a time then add heavy cream, lemon juice, and flour. Mix until well-combined.\n" +
+                    " \n" +
+                    "3.    Pour the filling onto the chilled crust and bake in a waterbath at 400°F for 10 minutes. Lower heat at 325°F for another 30-40 minutes. Turn off the heat and leave the cake inside the oven for 1 hour. Take the cheesecake out of the oven and allow to completely cool.\n" +
+                    " \n" +
+                    "4.    Refrigerate the cheesecake for at least 4 hours before serving.\n" +
+                    " \n" +
+                    "5.    When ready to serve, top the cheesecake with blueberry filling.",
             "recipe5",
-            "https://www.thereciperebel.com/blueberry-cheesecake/",
+            "fBMB_D_jSls",
             "bookmarked",
             "1",
             "1"
