@@ -76,6 +76,21 @@ class TimerActivity : DrawerBaseActivity()  {
             .build()
         picker!!.show(supportFragmentManager, "littlechef")
         picker!!.addOnPositiveButtonClickListener {
+            if (picker!!.hour > 12) {
+                binding!!.selectedTime.text =
+                    String.format("Selected time is \n"+
+                            "%02d",
+                        picker!!.hour - 12
+                    ) + " : " + String.format("%02d", picker!!.minute) + " PM" + "\nClick on Set Alarm"
+
+            } else {
+                binding!!.selectedTime.text =
+                    "Selected time is \n"+picker!!.hour.toString() + " : " + picker!!.minute + " AM" + "\nClick on Set Alarm"
+            }
+
+            Toast.makeText(this, "Click on Set Alarm to be alerted", Toast.LENGTH_SHORT).show()
+
+
             calendar = Calendar.getInstance()
             calendar!![Calendar.HOUR_OF_DAY] =  picker!!.hour
             calendar!![Calendar.MINUTE] = picker!!.minute
