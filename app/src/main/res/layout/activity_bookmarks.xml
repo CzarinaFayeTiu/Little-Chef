@@ -25,7 +25,7 @@
             android:id="@+id/rvRecipes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/row_recipe"
+            tools:listitem="@layout/row_recipe_bookmark"
             android:paddingBottom="80dp"
             android:clipToPadding="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>

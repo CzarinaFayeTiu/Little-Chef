@@ -39,13 +39,13 @@
                     android:textSize="25sp"/>
 
                 <ImageButton
-                    android:id="@+id/btnBookmark"
+                    android:id="@+id/btnDelete"
                     android:layout_width="42dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:src="@drawable/ic_baseline_bookmarks_24"
+                    android:src="@drawable/ic_baseline_delete_24"
                     app:tint="@color/bookmark_button_color" />
             </TableRow>
             <TableRow>

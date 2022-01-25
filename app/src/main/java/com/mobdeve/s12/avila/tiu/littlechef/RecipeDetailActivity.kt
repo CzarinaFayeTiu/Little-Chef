@@ -1,10 +1,12 @@
 package com.mobdeve.s12.avila.tiu.littlechef
 
+import android.content.Intent
 import android.icu.util.Calendar
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
@@ -98,21 +100,27 @@ class RecipeDetailActivity : YouTubeBaseActivity() {
         var speakBtn = binding!!.speakBtn
 
         speakBtn.setOnClickListener {
-            //get edit text
-            val toSpeak = binding!!.tvRecipeInstructions.text.toString()
-            if(toSpeak == ""){
-                //if no text is written
-                Toast.makeText(this, "Enter Text", Toast.LENGTH_SHORT).show()
-            }else{
-                tts.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null)
-            }
+                //get edit text
+                val toSpeak = binding!!.tvRecipeInstructions.text.toString()
+
+                if (tts.isSpeaking) {
+                    tts.stop()
+                    speakBtn!!.setImageResource(R.drawable.ic_baseline_volume_up_24)
+                } else {
+                    if(toSpeak == ""){
+                        //if no text is written
+                        Toast.makeText(this, "Enter Text", Toast.LENGTH_SHORT).show()
+                    }else{
+                        tts.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null)
+                        speakBtn!!.setImageResource(R.drawable.ic_baseline_volume_off_24)
+                    }
+                }
         }
-        stopBtn.setOnClickListener {
-            if(tts.isSpeaking){
-                tts.stop()
-            }else{
-                Toast.makeText(this, "Not Speaking", Toast.LENGTH_SHORT).show()
-            }
+
+
+        //back Button
+        binding!!.imgBack.setOnClickListener {
+            startActivity(Intent(applicationContext, MainActivity::class.java))
         }
 
 

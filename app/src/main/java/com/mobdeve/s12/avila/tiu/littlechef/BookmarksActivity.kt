@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.widget.SearchView
 import com.mobdeve.s12.avila.tiu.littlechef.Adapter.RecipeAdapter
+import com.mobdeve.s12.avila.tiu.littlechef.Adapter.RecipeAdapter_Bookmark
 import com.mobdeve.s12.avila.tiu.littlechef.DBHelper.Constants
 import com.mobdeve.s12.avila.tiu.littlechef.DBHelper.MyDbHelper
 import com.mobdeve.s12.avila.tiu.littlechef.databinding.ActivityBookmarksBinding
@@ -35,7 +36,7 @@ class BookmarksActivity :DrawerBaseActivity()  {
     }
 
     private fun loadRecipes() {
-        val adapterRecipe = RecipeAdapter(this, dbHelper.searchBookmarks())
+        val adapterRecipe = RecipeAdapter_Bookmark(this, dbHelper.searchBookmarks())
 
         binding!!.rvRecipes.adapter = adapterRecipe
     }
