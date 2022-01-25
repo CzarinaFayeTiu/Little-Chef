@@ -98,6 +98,8 @@ class RecipeDetailActivity : YouTubeBaseActivity() {
         })
 
         var speakBtn = binding!!.speakBtn
+        var ingredientsSpeakBtn = binding!!.ingredientsSpeakBtn
+
 
         speakBtn.setOnClickListener {
                 //get edit text
@@ -115,6 +117,21 @@ class RecipeDetailActivity : YouTubeBaseActivity() {
                         speakBtn!!.setImageResource(R.drawable.ic_baseline_volume_off_24)
                     }
                 }
+        }
+        ingredientsSpeakBtn.setOnClickListener {
+            val ingredientsSpeak = binding!!.tvRecipeIngredients.text.toString()
+            if (tts.isSpeaking) {
+                tts.stop()
+                ingredientsSpeakBtn!!.setImageResource(R.drawable.ic_baseline_volume_up_24)
+            } else {
+                if(ingredientsSpeak == ""){
+                    //if no text is written
+                    Toast.makeText(this, "Enter Text", Toast.LENGTH_SHORT).show()
+                }else{
+                    tts.speak(ingredientsSpeak, TextToSpeech.QUEUE_FLUSH, null)
+                    ingredientsSpeakBtn!!.setImageResource(R.drawable.ic_baseline_volume_off_24)
+                }
+            }
         }
 
 

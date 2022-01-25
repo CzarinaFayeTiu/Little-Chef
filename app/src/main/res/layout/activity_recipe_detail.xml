@@ -68,17 +68,29 @@
                     android:textColor="@color/text"/>
             </TableRow>
             <TableRow>
-
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="Ingredients"
-                    android:textColor="@color/text"
-                    android:textSize="20dp" />
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:text="Ingredients"
+                        android:textColor="@color/text"
+                        android:textSize="20dp" />
+                    <ImageView
+                        android:id="@+id/ingredientsSpeakBtn"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_baseline_volume_up_24"
+                        app:tint="@color/purple_500"
+                        android:layout_marginTop="20dp"/>
+                </LinearLayout>
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:id="@+id/tvRecipeIngredients"
                     android:layout_height="wrap_content"
