@@ -72,6 +72,10 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.HolderRecord>() {
         holder.tvName.text = name
         holder.tvCategory.text = category
 
+        if (bookmark == "bookmarked") {
+            holder.btnBookmark.setImageResource(R.drawable.ic_baseline_bookmarks_colored)
+        }
+
         if (image == "null") {
             //no image in record, set default
             holder.ivImage.setImageResource(R.drawable.littlechef_logo)
@@ -106,14 +110,28 @@ class RecipeAdapter() : RecyclerView.Adapter<RecipeAdapter.HolderRecord>() {
 
         //handle bookmark click
         holder.btnBookmark.setOnClickListener {
-            //will implement later
-            Toast.makeText(context,"Bookmarked $name", Toast.LENGTH_SHORT).show()
 
-            //holder.btnBookmark.isSelected = !holder.btnBookmark.isSelected
-            dbHelper?.updateRecord(id, "bookmarked")
-            //refresh record by calling activity's onResume method
-            (context as MainActivity)!!.onResume()
-            //(context as BookmarksActivity)!!.onResume()
+            if (bookmark == "bookmarked") {
+                Toast.makeText(context,"Removed $name", Toast.LENGTH_SHORT).show()
+
+                //holder.btnBookmark.isSelected = !holder.btnBookmark.isSelected
+                dbHelper?.updateRecord(id, "N/A")
+                //refresh record by calling activity's onResume method
+                (context as MainActivity)!!.onResume()
+                //(context as BookmarksActivity)!!.onResume()
+                holder.btnBookmark.setImageResource(R.drawable.ic_baseline_bookmarks_24)
+            } else {
+                //will implement later
+                Toast.makeText(context,"Bookmarked $name", Toast.LENGTH_SHORT).show()
+
+                //holder.btnBookmark.isSelected = !holder.btnBookmark.isSelected
+                dbHelper?.updateRecord(id, "bookmarked")
+                //refresh record by calling activity's onResume method
+                (context as MainActivity)!!.onResume()
+                //(context as BookmarksActivity)!!.onResume()
+                holder.btnBookmark.setImageResource(R.drawable.ic_baseline_bookmarks_colored)
+            }
+
         }
     }
 

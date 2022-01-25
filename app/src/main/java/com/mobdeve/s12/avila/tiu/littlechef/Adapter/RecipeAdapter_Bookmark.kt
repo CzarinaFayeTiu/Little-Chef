@@ -108,7 +108,6 @@ class RecipeAdapter_Bookmark() : RecyclerView.Adapter<RecipeAdapter_Bookmark.Hol
         holder.btnDelete.setOnClickListener {
             //will implement later
             Toast.makeText(context,"Removed $name", Toast.LENGTH_SHORT).show()
-
             //holder.btnBookmark.isSelected = !holder.btnBookmark.isSelected
             dbHelper?.updateRecord(id, "N/A")
             //refresh record by calling activity's onResume method
