@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/selectedTime"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:text="No alarm has been set\n"
         android:textAlignment="center"
         android:textColor="@color/text"

@@ -41,6 +41,7 @@
         <activity
             android:name=".TimerActivity"
             android:exported="true" />
+        <receiver android:name=".TimerReceiver"/>
         <activity
             android:name=".BookmarksActivity"
             android:exported="true" />
