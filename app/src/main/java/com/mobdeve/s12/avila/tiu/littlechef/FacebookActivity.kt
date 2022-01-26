@@ -29,6 +29,7 @@ class FacebookActivity: DrawerBaseActivity()  {
     private var imageView: ImageView? = null
     private var textView: TextView? = null
     var binding:ActivityFacebookBinding? =null
+    var profilePic:String?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFacebookBinding.inflate(layoutInflater)
@@ -55,6 +56,35 @@ class FacebookActivity: DrawerBaseActivity()  {
                 Log.d("FACEBOOK", "Login Error")
             }
         })
+        val graphRequest =
+            GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken())
+            { `object`, response ->
+
+                Log.d("FACEBOOK", `object`.toString())
+
+                try {
+                    val name = `object`!!.getString("name")
+                    textView!!.text = name
+
+                    profilePic = `object`.getJSONObject("picture")
+                        .getJSONObject("data").getString("url")
+
+                    Log.d("FACEBOOKACTIVITYPICTURE", "PIC URL STRING: $profilePic")
+
+                    Picasso.get().load(profilePic).into(imageView)
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+
+            }
+        val bundle = Bundle()
+        bundle.putString(
+            "fields",
+            "name, first_name, last_name, email, picture"
+        )
+        graphRequest.parameters = bundle
+        graphRequest.executeAsync()
 
     }
 
@@ -72,9 +102,12 @@ class FacebookActivity: DrawerBaseActivity()  {
                     val name = `object`!!.getString("name")
                     textView!!.text = name
 
-                    val pic = `object`.getJSONObject("picture")
+                    profilePic = `object`.getJSONObject("picture")
                         .getJSONObject("data").getString("url")
-                    Picasso.get().load(pic).into(imageView)
+
+                    Log.d("FACEBOOKACTIVITYPICTURE", "PIC URL STRING: $profilePic")
+
+                    Picasso.get().load(profilePic).into(imageView)
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
