@@ -3,6 +3,7 @@ package com.mobdeve.s12.avila.tiu.littlechef
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
@@ -11,7 +12,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.facebook.*
-import com.facebook.R
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -132,7 +132,8 @@ class FacebookActivity: DrawerBaseActivity()  {
             if (currentAccessToken == null) { //if null it means log out
                 LoginManager.getInstance().logOut()
                 textView!!.text = ""
-                imageView!!.setImageResource(0)
+                imageView!!.setImageResource(R.drawable.person)
+
             }
         }
     }
