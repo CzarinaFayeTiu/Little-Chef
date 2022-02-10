@@ -21,6 +21,6 @@
         android:layout_gravity = "start"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"
-        app:itemTextColor="@color/navColor"/>
+        app:itemTextColor="@color/navColor" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
