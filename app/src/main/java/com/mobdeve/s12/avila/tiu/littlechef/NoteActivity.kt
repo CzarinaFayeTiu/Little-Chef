@@ -19,6 +19,11 @@ class NoteActivity: DrawerBaseActivity()  {
 
     }
 
+    /*
+        Replace fragment function - activty_note.xml
+        calls for a frame layout for design ; frame layout will be replace throughout the
+        use of notes
+     */
     fun replaceFragment(fragment: Fragment, istransition:Boolean){
         val fragmentTransition = supportFragmentManager.beginTransaction()
 

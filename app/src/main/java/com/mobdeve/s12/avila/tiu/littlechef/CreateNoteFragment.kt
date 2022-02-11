@@ -31,6 +31,10 @@ import pub.devrel.easypermissions.EasyPermissions
 import java.text.SimpleDateFormat
 import java.util.*
 
+/*
+    base fragment is for coroutines and easy permission is for uploading
+    images in notes from phone album
+ */
 class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,EasyPermissions.RationaleCallbacks{
 
     var selectedColor = "#F8FF97"
@@ -44,12 +48,10 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        //find if note has been created or is new on creation
         noteId = requireArguments().getInt("noteId",-1)
 
     }
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,12 +74,13 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         super.onViewCreated(view, savedInstanceState)
 
 
-        if (noteId != -1){
+        if (noteId != -1){ //note has been created
 
             launch {
                 context?.let {
                     var notes = NotesDatabase.getDatabase(it).noteDao().getSpecificNote(noteId)
                     colorView.setBackgroundColor(Color.parseColor(notes.color))
+                    selectedColor = notes.color.toString()
                     etNoteTitle.setText(notes.title)
                     etNoteSubTitle.setText(notes.subTitle)
                     etNoteDesc.setText(notes.noteText)
@@ -106,14 +109,17 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 }
             }
         }
+
+        //calls the broadcast receiver below
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
             BroadcastReceiver, IntentFilter("bottom_sheet_action")
         )
 
+        //date of create note
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
 
         currentDate = sdf.format(Date())
-        colorView.setBackgroundColor(Color.parseColor(selectedColor))
+        colorView.setBackgroundColor(Color.parseColor("#F8FF97"))
 
         tvDateTime.text = currentDate
 
@@ -121,6 +127,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             if (noteId != -1){
                 updateNote()
             }else{
+                //if note has not been created yet save note
                 saveNote()
             }
         }
@@ -130,8 +137,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         }
 
         imgMore.setOnClickListener{
-
-
+            //when the line at the bottom of create note is pressed load the bottom fragment
             var noteBottomSheetFragment = NotesBottomSheetFragment.newInstance(noteId)
             noteBottomSheetFragment.show(requireActivity().supportFragmentManager,"Note Bottom Sheet Fragment")
         }
@@ -204,6 +210,8 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             }
         }
     }
+
+    //save it in room database
     private fun saveNote(){
 
         if (etNoteTitle.text.isNullOrEmpty()){
@@ -220,17 +228,28 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         }
 
         else{
-
+            /*
+                coroutines help in accomplishing background task with lightweight thread
+                without having to call callback
+                use launch to complete that task and then do something on Main Thread
+             */
             launch {
+                //assign user inputs to a note object
                 var notes = Notes()
                 notes.title = etNoteTitle.text.toString()
                 notes.subTitle = etNoteSubTitle.text.toString()
                 notes.noteText = etNoteDesc.text.toString()
                 notes.dateTime = currentDate
-                notes.color = selectedColor
+
+                if(selectedColor.isNullOrEmpty()){
+                    selectedColor = "#F8FF97"
+                }else {
+                    notes.color = selectedColor
+                }
                 notes.imgPath = selectedImagePath
                 notes.webLink = webLink
                 context?.let {
+                    //save note object to room db in notes database
                     NotesDatabase.getDatabase(it).noteDao().insertNotes(notes)
                     etNoteTitle.setText("")
                     etNoteSubTitle.setText("")
@@ -315,7 +334,8 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         }
     }
 
-
+    //connects to the action taken in notebottomsheetfragment
+    //broadcast to receive the action
     private val BroadcastReceiver : BroadcastReceiver = object :BroadcastReceiver(){
         override fun onReceive(p0: Context?, p1: Intent?) {
 
@@ -398,15 +418,14 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
 
     }
 
+    //permission for accessing image in album
     private fun hasReadStoragePerm():Boolean{
         return EasyPermissions.hasPermissions(requireContext(),Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
-
+    //either ask for permission or open gallery
     private fun readStorageTask(){
         if (hasReadStoragePerm()){
-
-
             pickImageFromGallery()
         }else{
             EasyPermissions.requestPermissions(
@@ -418,6 +437,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         }
     }
 
+    //open album and pic an image
     private fun pickImageFromGallery(){
         var intent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         if (intent.resolveActivity(requireActivity().packageManager) != null){

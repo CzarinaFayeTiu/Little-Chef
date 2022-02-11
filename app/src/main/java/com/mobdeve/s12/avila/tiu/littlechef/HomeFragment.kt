@@ -44,6 +44,7 @@ class HomeFragment : BaseFragment() {
 
         recycler_view.setHasFixedSize(true)
 
+        //grid layout two cards per row
         recycler_view.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
 
         launch {
@@ -57,6 +58,8 @@ class HomeFragment : BaseFragment() {
 
         notesAdapter!!.setOnClickListener(onClicked)
 
+        //click floating button to go to crete notes page
+        //replace home fragment with create note fragment
         fabBtnCreateNote.setOnClickListener {
             replaceFragment(CreateNoteFragment.newInstance(),false)
         }
@@ -86,7 +89,7 @@ class HomeFragment : BaseFragment() {
 
     }
 
-
+    //function in notes adapter
     private val onClicked = object :NotesAdapter.OnItemClickListener{
         override fun onClicked(notesId: Int) {
 
@@ -102,7 +105,7 @@ class HomeFragment : BaseFragment() {
 
     }
 
-
+    //like the one in noteactivity.kt - used to replace the fragment display
     fun replaceFragment(fragment:Fragment, istransition:Boolean){
         val fragmentTransition = activity!!.supportFragmentManager.beginTransaction()
 

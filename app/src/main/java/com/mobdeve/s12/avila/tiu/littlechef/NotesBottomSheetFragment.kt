@@ -15,7 +15,10 @@ import kotlinx.android.synthetic.main.fragment_notes_bottom_sheet.*
 class NotesBottomSheetFragment : BottomSheetDialogFragment() {
     var selectedColor = "#171C26"
 
-
+    /*
+        The bottom layer is wrap in a fragment in fragmet_create_note
+        when it is click open the bottom sheet fragment
+     */
     companion object {
         var noteId = -1
         fun newInstance(id:Int): NotesBottomSheetFragment{
@@ -26,14 +29,21 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
             return fragment
         }
     }
+
     override fun setupDialog(dialog: Dialog, style: Int) {
         super.setupDialog(dialog, style)
 
+        //calls the layout for the bottom features
         val view = LayoutInflater.from(context).inflate(R.layout.fragment_notes_bottom_sheet,null)
         dialog.setContentView(view)
 
         val param = (view.parent as View).layoutParams as CoordinatorLayout.LayoutParams
 
+        /*
+            A Behavior implements one or more interactions that a user can take
+            on a child view. These interactions may include drags, swipes, flings,
+            or any other gestures.
+         */
         val behavior = param.behavior
 
         if (behavior is BottomSheetBehavior<*>){
@@ -84,6 +94,10 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        /*
+            delete button should appear only when the note opened has
+            been saved to the database already
+         */
         if (noteId != -1){
             layoutDeleteNote.visibility = View.VISIBLE
         }else{
@@ -94,7 +108,11 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
 
     private fun setListener(){
         fNote1.setOnClickListener {
-
+            /*
+                if pick the first note color a check will appear
+                in the circle note color to signify that it
+                has been selected same with the others
+             */
             imgNote1.setImageResource(R.drawable.ic_tick)
             imgNote2.setImageResource(0)
             imgNote4.setImageResource(0)
@@ -187,6 +205,7 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
         }
 
+        //add image
         layoutImage.setOnClickListener{
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("action","Image")

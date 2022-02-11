@@ -8,21 +8,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_rv_notes.view.*
 import kotlin.collections.ArrayList
-
+//called in homefragment.kt
 class NotesAdapter() :
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
     var listener:OnItemClickListener? = null
     var arrList = ArrayList<Notes>()
+    //note card template
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         return NotesViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_rv_notes,parent,false)
         )
     }
-
+    //how many notes are there
     override fun getItemCount(): Int {
         return arrList.size
     }
-
+    //set array list of notes
     fun setData(arrNotesList: List<Notes>){
         arrList = arrNotesList as ArrayList<Notes>
     }
@@ -31,6 +32,8 @@ class NotesAdapter() :
         listener = listener1
     }
 
+    //populate notes- home with note cards
+    //show title, datetime, color,image,and link in each card
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
 
         holder.itemView.tvTitle.text = arrList[position].title
@@ -39,7 +42,7 @@ class NotesAdapter() :
         if (arrList[position].color != null){
             holder.itemView.cardView.setCardBackgroundColor(Color.parseColor(arrList[position].color))
         }else{
-            holder.itemView.cardView.setCardBackgroundColor(Color.parseColor(R.color.secondbackground.toString()))
+            holder.itemView.cardView.setCardBackgroundColor(Color.parseColor(R.color.ColorYellowNote.toString()))
         }
 
         if (arrList[position].imgPath != null){
