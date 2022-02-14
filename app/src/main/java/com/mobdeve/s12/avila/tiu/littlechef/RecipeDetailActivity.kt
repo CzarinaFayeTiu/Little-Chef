@@ -24,8 +24,6 @@ import java.util.*
 
 class RecipeDetailActivity : YouTubeBaseActivity() {
 
-    //actionbar
-    //private var actionBar:ActionBar? = null
     //db helper
     private var dbHelper:MyDbHelper? = null
     private var recipeId:String? = null
@@ -45,13 +43,6 @@ class RecipeDetailActivity : YouTubeBaseActivity() {
         binding =  ActivityRecipeDetailBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-        /*
-
-        //setting up actionbar
-        actionBar = supportActionBar
-        actionBar!!.title = "Recipe Details"
-        actionBar!!.setDisplayShowHomeEnabled(true)
-        actionBar!!.setDisplayHomeAsUpEnabled(true)*/
 
         //init db helper
         dbHelper = MyDbHelper(this)
@@ -153,15 +144,11 @@ class RecipeDetailActivity : YouTubeBaseActivity() {
 
         if (cursor.moveToFirst()) {
             do {
-                val id = cursor!!.getString(0)
                 val name = cursor!!.getString(1)
                 val category = cursor!!.getString(2)
                 val ingredients = cursor!!.getString(3)
                 val instructions = cursor!!.getString(4)
-                val image = cursor!!.getString(5)
                 val link = cursor!!.getString(6)
-                val addedTime = cursor!!.getString(7)
-                val updatedTime = cursor!!.getString(8)
 
                 //set data
                 binding!!.tvRecipeName.text = name
@@ -170,29 +157,7 @@ class RecipeDetailActivity : YouTubeBaseActivity() {
                 binding!!.tvRecipeInstructions.text = instructions
                 VIDEO_ID = link
 
-                /*
-                if (image == "null") {
-                    //no image in record, set default
-                    binding!!.ivRecipeImage.setImageResource(R.drawable.littlechef_logo)
-                } else if (image == "recipe1") {
-                    //recipe 1 - chocolate cake
-                    binding!!.ivRecipeImage.setImageResource(R.drawable.recipe1)
-                } else if (image == "recipe2") {
-                    //recipe 2 - chicken adobo
-                    binding!!.ivRecipeImage.setImageResource(R.drawable.recipe2)
-                }else if (image == "recipe3") {
-                    //recipe 3 - mango float
-                    binding!!.ivRecipeImage.setImageResource(R.drawable.recipe3)
-                }else if (image == "recipe4") {
-                    //recipe 4 - sinigang
-                    binding!!.ivRecipeImage.setImageResource(R.drawable.recipe4)
-                }else if (image == "recipe5") {
-                    //recipe 5 - chocolate cake
-                    binding!!.ivRecipeImage.setImageResource(R.drawable.recipe5)
-                } else {
-                    //have image in record
-                    binding!!.ivRecipeImage.setImageURI(Uri.parse(image))
-                }*/
+
             } while (cursor.moveToNext())
         }
         //close db connection

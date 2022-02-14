@@ -16,6 +16,7 @@ import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.app.ActivityCompat.recreate
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
@@ -71,8 +72,12 @@ class MainActivity : DrawerBaseActivity() {
         binding!!.rvRecipes.adapter = adapterRecipe
     }
     private fun searchCategories(query:String) {
-        val adapterRecipe = RecipeAdapter(this, dbHelper.searchCategories(query))
-        binding!!.rvRecipes.adapter = adapterRecipe
+        if (query != "All") {
+            val adapterRecipe = RecipeAdapter(this, dbHelper.searchCategories(query))
+            binding!!.rvRecipes.adapter = adapterRecipe
+        } else
+            loadRecipes()
+
     }
 
     public override fun onResume() {
@@ -117,7 +122,6 @@ class MainActivity : DrawerBaseActivity() {
                 searchCategories(search)
                 Log.d("MAINACTIVITY", "FILTER STRING: $search")
             } })
-
 
 
 
@@ -249,7 +253,7 @@ class MainActivity : DrawerBaseActivity() {
                     "10.    Serve hot. Share and enjoy!",
             "recipe4",
             "t-beBtUZz3E",
-            "bookmarked",
+            "null",
             "1",
             "1"
         )
@@ -280,7 +284,184 @@ class MainActivity : DrawerBaseActivity() {
                     "5.    When ready to serve, top the cheesecake with blueberry filling.",
             "recipe5",
             "fBMB_D_jSls",
-            "bookmarked",
+            "null",
+            "1",
+            "1"
+        )
+
+        //Recipe 6 - Sweet and Sour Tilapia
+        dbHelper.insertRecord(
+            "Sweet and Sour Tilapia",
+            "Seafood",
+            "  2 pieces tilapia, cleaned\n" +
+                    "  2 tablespoons Knorr Liquid Seasoning\n" +
+                    "  1 piece red bell pepper, julienne\n" +
+                    "  1 piece green bell pepper, julienne\n" +
+                    "  1 piece carrot, julienne\n" +
+                    "  5 cloves garlic, crushed\n" +
+                    "  1 piece onion, sliced\n" +
+                    "  2 knobs ginger, julienne\n" +
+                    "  2 tablespoons cornstarch\n" +
+                    "  2 cups water\n" +
+                    "  5 1/2 tablespoons white vinegar\n" +
+                    "  8 tablespoons tomato ketchup\n" +
+                    "  7 tablespoons white sugar\n" +
+                    "  1 1/4 cup cooking oil\n" +
+                    "  Salt and ground black pepper to taste",
+            "1.    Apply Knorr Liquid Seasoning all over the tilapia. Let it stand for 10 minutes so that the fish can absorb the flavor of the seasoning.\n" +
+                    " \n" +
+                    "2.     Heat around 1 cup of cooking oil in a pan. Once the oil gets hot, fry the fish until the color turns golden brown. Flip to fry the opposite side. Remove from the pan. Place on a clean plate. Set aside.\n" +
+                    " \n" +
+                    "3.    Make the sauce by heating 3 tablespoons of cooking oil in a cooking pot. Saute onion and garlic for 10 seconds. Add ginger. Saute for 12 seconds.\n" +
+                    " \n" +
+                    "4.    Pour white vinegar and water. Let boil.\n" +
+                    " \n" +
+                    "5.    Add tomato ketchup. Stir until it completely dilutes in the mixture.\n" +
+                    " \n" +
+                    "6.    Add sugar. Stir until the sugar gets fully incorporated.\n" +
+                    " \n" +
+                    "7.    Put carrots and bell peppers. Cook for 3 minutes.\n" +
+                    " \n" +
+                    "8.    Combine cornstarch and 3 tablespoons water. Mix well. Pour into the cooking pot. Stir until sauce thickens.\n" +
+                    " \n" +
+                    "9.    Season with salt and ground black pepper. Add a piece of tilapia and cook for 3 minutes.\n" +
+                    " \n" +
+                    "10.    Transfer to a serving plate. Serve with rice. Share and enjoy!",
+            "recipe6",
+            "N90og8QI4IQ",
+            "null",
+            "1",
+            "1"
+        )
+
+        //Recipe 7 - Chinese Cabbage Soup
+        dbHelper.insertRecord(
+            "Chinese Cabbage Soup",
+            "Soup",
+            "  200 g ground pork\n" +
+                    "  500 g Chinese cabbage\n" +
+                    "  1  handful green onions and coriander together, chopped\n" +
+                    "  1  teaspoon vegetable stock powder\n" +
+                    "  1/2  teaspoon salt\n" +
+                    "  2  tablespoons minced garlic, black pepper, coriander roots together\n" +
+                    "  2  tablespoons cooking oil\n" +
+                    "  1  teaspoon soy sauce\n",
+            "1.    Heat the cooking oil in a pan on high heat.\n" +
+                    " \n" +
+                    "2.     Add the minced garlic, black pepper and coriander roots. Sauté for 1 minute.\n" +
+                    " \n" +
+                    "3.    Add the ground pork. Sauté the ingredients together.\n" +
+                    " \n" +
+                    "4.    Season the ground pork with soy sauce and sauté until the ground pork is not pink.\n" +
+                    " \n" +
+                    "5.    Put the pot of water on the stove.\n" +
+                    " \n" +
+                    "6.    Add the cooked ground pork into the pot.\n" +
+                    " \n" +
+                    "7.    Add vegetable seasoning powder and salt.\n" +
+                    " \n" +
+                    "8.    Wait until the water boils, then add the Chinese cabbage. Allow the soup to boil for 7 minutes.\n" +
+                    " \n" +
+                    "9.    After 7 minutes, add the chopped green onions and chopped coriander.\n" +
+                    " \n" +
+                    "10.    Using a spoon to stir the ingredients together. ENJOY!",
+            "recipe7",
+            "pmW3SWpP2ig",
+            "null",
+            "1",
+            "1"
+        )
+
+        //Recipe 8 - Classic Lasagna
+        dbHelper.insertRecord(
+            "Classic Lasagna",
+            "Pasta",
+            "  3/4 lb. lasagna noodles\n" +
+                    "  1 tsp. extra-virgin olive oil, plus more for drizzling\n" +
+                    "  2 lb. ground beef\n" +
+                    "  4 cloves garlic, minced\n" +
+                    "  2 tsp. dried oregano\n" +
+                    "  Kosher salt\n" +
+                    "  Freshly ground black pepper\n" +
+                    "  2 (32-0z.) jars marinara\n" +
+                    "  16 oz. whole milk ricotta\n" +
+                    "  1/2 c. freshly grated Parmesan, divided\n" +
+                    "  1/4 c. chopped parsley, plus more for garnish\n" +
+                    "  1 large egg\n" +
+                    "  2 lb. sliced mozzarella",
+            "1.    Preheat oven to 375º. In a large pot of salted boiling water, cook pasta according to package directions until al dente, less 2 minutes. Drain and drizzle a bit of olive oil to prevent noodles from sticking together.\n" +
+                    " \n" +
+                    "2.     In a large pot over medium-high heat, heat oil. Cook ground beef until no longer pink, breaking up with a wooden spoon. Remove from heat and drain fat. Return beef to skillet and add garlic and oregano and cook, stirring, for 1 minute. Season with salt and pepper, then add marinara and stir until warmed through.\n" +
+                    " \n" +
+                    "3.    Combine ricotta, 1/4 cup Parmesan, parsley, and egg in a large mixing bowl and season with salt and pepper. Set aside.\n" +
+                    " \n" +
+                    "4.    In a large casserole dish, evenly spread a quarter of the meat sauce across the bottom of the dish, then top with a single layer of lasagna noodles, a layer of ricotta mixture, a single layer of mozzarella, and a layer of meat sauce. Repeat layers, topping the last layer of noodles with meat sauce, Parmesan, and mozzarella.\n" +
+                    " \n" +
+                    "5.    Cover with foil and bake for 15 minutes, then increase temperature to 400º and bake uncovered for 18 to 20 minutes.\n" +
+                    " \n" +
+                    "6.    Cover with foil and bake for 15 minutes, then increase temperature to 400º and bake uncovered for 18 to 20 minutes.\n",
+            "recipe8",
+            "uCH4axRLeXM",
+            "null",
+            "1",
+            "1"
+        )
+
+        //Recipe 9 - Spaghetti alla Carbonara
+        dbHelper.insertRecord(
+            "Spaghetti alla Carbonara",
+            "Pasta",
+            "  220g Spaghetti or Spaghettoni (the largest spaghetti)\n" +
+                    "  25g Guanciale (the cheek of the pork) or pancetta (Italian bacon) cut into small cubes.\n" +
+                    "  2 tbsp olive oil\n" +
+                    "  2 eggs\n" +
+                    "  50g Parmesan cheese (or aged pecorino) freshly grated.\n" +
+                    "  Freshly ground black pepper.\n",
+                    "1.     Cook the pasta in a large pan of boiling salted water until al dente.\n" +
+                    " \n" +
+                    "2.    Meanwhile, heat the oil in a pan and fry the guanciale or pancetta until crisp.\n" +
+                    " \n" +
+                    "3.    Lightly beat the eggs in a large bowl with the grated cheese and pepper.\n" +
+                    " \n" +
+                    "4.    When the pasta is ready, drain and add to the pan with the guanciale. Then mix well to coat everything. \n" +
+                    " \n" +
+                    "5.    Take off the heat. Allow to cool slightly. \n" +
+                    " \n" +
+                    "6.    Then add the egg and cheese mixture. Stir to coat the pasta and serve immediately.\n",
+            "recipe9",
+            "3AAdKl1UYZs",
+            "null",
+            "1",
+            "1"
+        )
+
+        //Recipe 10 - Spaghetti alla Carbonara
+        dbHelper.insertRecord(
+            "Salted Egg Chicken Wings",
+            "Chicken",
+            "  513 grams chicken wing part\n" +
+                    "  4 tablespoon cornstarch\n" +
+                    "  3 tablespoon fish sauce\n" +
+                    "  100 grams margarine/butter\n" +
+                    "  3 cloves garlic\n" +
+                    "  4 pieces salted egg yolk\n" +
+                    "  3 pieces red chili\n" +
+                    "  1 cup salted egg powder\n" +
+                    "  cooking oil\n" +
+                    "  black ground pepper\n",
+            "1.     Marinate the chicken wings with 3 tablespoon of fish sauce, 4 tablespoon of cornstarch and a dash of black ground pepper. Mix to evenly coat the chicken wings with the mixture. Let it sit for 15 minutes.\n" +
+                    " \n" +
+                    "2.    Dredge the marinated chicken wings in flour before frying in medium heat. Cook for 8 minutes or until the chicken wings turn golden brown in color.\n" +
+                    " \n" +
+                    "3.    Drain the excess oil from the fried chicken wings using a paper towel. Set aside. In a cooking pan melt 100 grams of butter. Saute 3 cloves of minced garlic then add 4 pieces of salted egg yolk.\n" +
+                    " \n" +
+                    "4.    Pour in the fried chicken wings, mix until all the chicken wings are evenly coated. Set aside for later.  \n" +
+                    " \n" +
+                    "5.    In a low heat, cook 3 pieces of slice red chili. Add 1 cup of salted egg powder. Continue mixing for 2 minutes then turn off the stove. Coat the chicken wings in the salted egg powder mixture. Transfer in a serving plate. Enjoy!\n"
+                    ,
+            "recipe10",
+            "TM5GotXFtas",
+            "null",
             "1",
             "1"
         )

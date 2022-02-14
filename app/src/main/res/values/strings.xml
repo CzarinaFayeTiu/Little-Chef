@@ -39,6 +39,7 @@
     </string-array>
 
     <string-array name="filter">
+        <item>All</item>
         <item>Dessert</item>
         <item>Chicken</item>
         <item>Pork</item>

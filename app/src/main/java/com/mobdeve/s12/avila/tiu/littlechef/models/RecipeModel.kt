@@ -1,7 +1,5 @@
 package com.mobdeve.s12.avila.tiu.littlechef.models
 
-import java.util.*
-
 //Model class for RecyclerView
 data class RecipeModel(
     var id: String,

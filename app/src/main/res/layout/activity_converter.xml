@@ -58,12 +58,12 @@
 
                 <TextView
                     android:id="@+id/et_secondConversion"
-                    android:layout_width="105dp"
+                    android:layout_width="112dp"
                     android:layout_height="30dp"
                     android:ems="5"
-                    android:textSize="18dp"
                     android:hint="To"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textSize="18dp" />
 
                 <Spinner
                     android:id="@+id/spinner_secondConversion"
