@@ -11,9 +11,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -71,6 +70,10 @@ class MainActivity : DrawerBaseActivity() {
 
         binding!!.rvRecipes.adapter = adapterRecipe
     }
+    private fun searchCategories(query:String) {
+        val adapterRecipe = RecipeAdapter(this, dbHelper.searchCategories(query))
+        binding!!.rvRecipes.adapter = adapterRecipe
+    }
 
     public override fun onResume() {
         super.onResume()
@@ -85,6 +88,38 @@ class MainActivity : DrawerBaseActivity() {
         //search view
         val item = menu!!.findItem(R.id.action_search)
         val searchView = item.actionView as SearchView
+
+        val filter = menu!!.findItem(R.id.action_filter)
+        val spinner = filter.actionView as Spinner
+        var search = ""
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.filter, //array is stored in strings.xml
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        spinner.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                search = parent?.getItemAtPosition(position).toString()
+                searchCategories(search)
+                Log.d("MAINACTIVITY", "FILTER STRING: $search")
+            } })
+
+
+
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {

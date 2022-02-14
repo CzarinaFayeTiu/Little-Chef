@@ -36,6 +36,14 @@
         <item>tablespoon</item>
         <item>gram</item>
         <item>ml</item>
+    </string-array>
 
+    <string-array name="filter">
+        <item>Dessert</item>
+        <item>Chicken</item>
+        <item>Pork</item>
+        <item>Seafood</item>
+        <item>Soup</item>
+        <item>Pasta</item>
     </string-array>
 </resources>
