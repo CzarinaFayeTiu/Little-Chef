@@ -90,7 +90,7 @@ class MyDbHelper(context: Context?):SQLiteOpenHelper(
         return recipeList
     }
 
-    //search data
+    //search data by Typing
     fun searchRecords(query:String):ArrayList<RecipeModel> {
         val recipeList = ArrayList<RecipeModel>()
 
@@ -120,7 +120,37 @@ class MyDbHelper(context: Context?):SQLiteOpenHelper(
         return recipeList
     }
 
-    //search data
+    //search data by Tags
+    fun searchCategories(query:String):ArrayList<RecipeModel> {
+        val recipeList = ArrayList<RecipeModel>()
+
+        val selectQuery = "SELECT * FROM ${Constants.TABLE_NAME} WHERE ${Constants.C_CATEGORY} LIKE '%$query%'"
+        val db = this.writableDatabase
+        val cursor = db.rawQuery(selectQuery, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor!!.getString(0)
+                val name = cursor!!.getString(1)
+                val category = cursor!!.getString(2)
+                val ingredients = cursor!!.getString(3)
+                val instructions = cursor!!.getString(4)
+                val image = cursor!!.getString(5)
+                val link = cursor!!.getString(6)
+                val bookmark = cursor!!.getString(7)
+                val addedTime = cursor!!.getString(8)
+                val updatedTime = cursor!!.getString(9)
+                //add record to list
+                recipeList.add(RecipeModel(id,name,category,ingredients,instructions,image,link,bookmark,addedTime,updatedTime))
+            } while (cursor.moveToNext())
+        }
+        //close db
+        db.close()
+        //return to queried result list
+        return recipeList
+    }
+
+    //search data using Bookmarks
     fun searchBookmarks():ArrayList<RecipeModel> {
         val recipeList = ArrayList<RecipeModel>()
         var q = "bookmarked"
