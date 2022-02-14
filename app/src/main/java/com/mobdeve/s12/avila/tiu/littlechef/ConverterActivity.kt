@@ -20,6 +20,7 @@ import java.lang.Exception
 import java.net.URL
 
 class ConverterActivity : DrawerBaseActivity() {
+    //default measurements displayed on app when opened
     var baseCurrency = "cup"
     var convertedToCurrency = "oz"
     var conversionRate = 0f
@@ -30,48 +31,16 @@ class ConverterActivity : DrawerBaseActivity() {
         binding = ActivityConverterBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
         spinnerSetup()
-        textChangedStuff()
-    }
-    fun read_json(){
-        var json: String? = null
-        try {
-            if (baseCurrency == convertedToCurrency) {
-                Toast.makeText(
-                    applicationContext,
-                    "Please pick a currency to convert",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                val inputStream: InputStream = assets.open("converter.json")
-                json = inputStream.bufferedReader().use { it.readText() }
-
-                var jsonobj = JSONObject(json)
-                var jsononj = jsonobj.getJSONObject(baseCurrency)
-                Log.i("MAIN", "VALUE CONTENT IS: $jsononj")
-
-                conversionRate = jsononj.getString(convertedToCurrency).toFloat()
-                Log.i("MAIN", "VALUE CONTENT INSIDE: $conversionRate")
-
-                binding!!.convert.setOnClickListener {
-                    val text =
-                        ((et_firstConversion.text.toString()
-                            .toFloat()) * conversionRate).toString()
-                    et_secondConversion?.setText(text)
-                }
-            }
-        }catch (e:Exception){
-            Log.d("Main", "exception error $e")
-        }
-
     }
 
+    //allows for the drop down measurement option in converter
     private fun spinnerSetup() {
         val spinner: Spinner = findViewById(R.id.spinner_firstConversion)
         val spinner2: Spinner = findViewById(R.id.spinner_secondConversion)
 
         ArrayAdapter.createFromResource(
             this,
-            R.array.currencies,
+            R.array.currencies, //array is stored in strings.xml
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -87,6 +56,7 @@ class ConverterActivity : DrawerBaseActivity() {
             spinner2.adapter = adapter
         }
 
+        //when selecting a measurement from the drop down spinner
         spinner.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("Not yet implemented")
@@ -98,6 +68,7 @@ class ConverterActivity : DrawerBaseActivity() {
                 position: Int,
                 id: Long
             ) {
+                //the first one slected is the basecurrency, i.e. the measurement you want to convert
                 baseCurrency = parent?.getItemAtPosition(position).toString()
                 read_json()
             } })
@@ -113,30 +84,55 @@ class ConverterActivity : DrawerBaseActivity() {
                 position: Int,
                 id: Long
             ) {
+                //the second one selected is the measurement you want to convert too
                 convertedToCurrency = parent?.getItemAtPosition(position).toString()
                 read_json()
             } })
     }
 
-    private fun textChangedStuff() {
-        et_firstConversion.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                try {
-                    read_json()
-                } catch (e: Exception) {
-                    Toast.makeText(applicationContext, "Type a value", Toast.LENGTH_SHORT).show()
+    /*
+        The convertion rates for all measurements can be found in
+        assets -> converter.json
+     */
+    fun read_json(){
+        var json: String? = null
+        try {
+            if (baseCurrency == convertedToCurrency) {
+                Toast.makeText(
+                    applicationContext,
+                    "Please pick a currency to convert",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                //read the json file
+                val inputStream: InputStream = assets.open("converter.json")
+                json = inputStream.bufferedReader().use { it.readText() }
+
+                //convert to json object
+                var jsonobj = JSONObject(json)
+
+                //search for the basecurrency to find its available converter values
+                var jsononj = jsonobj.getJSONObject(baseCurrency)
+                Log.i("MAIN", "VALUE CONTENT IS: $jsononj")
+
+                /*
+                    amongst the values found above search for the convertion amount
+                    to multiply with base currency
+                 */
+                conversionRate = jsononj.getString(convertedToCurrency).toFloat()
+                Log.i("MAIN", "VALUE CONTENT INSIDE: $conversionRate")
+
+                //once user clicks convert, solve for the amount
+                binding!!.convert.setOnClickListener {
+                    val text =
+                        ((et_firstConversion.text.toString()
+                            .toFloat()) * conversionRate).toString()
+                    et_secondConversion?.setText(text)
                 }
             }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                Log.d("Main", "Before Text Changed")
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                Log.d("Main", "OnTextChanged")
-            }
-
-        })
+        }catch (e:Exception){
+            Log.d("Main", "exception error $e")
+        }
 
     }
 

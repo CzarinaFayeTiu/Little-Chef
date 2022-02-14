@@ -45,9 +45,11 @@ class TimerActivity : DrawerBaseActivity()  {
 
     //when user presses set alarm button
     private fun setAlarm() {
+        // provides access to the system alarm services
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, TimerReceiver::class.java)
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+
         alarmManager!!.setExact(
             AlarmManager.RTC_WAKEUP, calendar!!.timeInMillis, pendingIntent
         )
@@ -68,22 +70,26 @@ class TimerActivity : DrawerBaseActivity()  {
 
     //this is where user will select the alarm time on the app
     private fun showTimePicker() {
+        /*
+            MatrialTimerPicker - A Dialog with a clock display and a clock
+            face to choose the time.
+         */
         picker = MaterialTimePicker.Builder()
             .setTimeFormat(TimeFormat.CLOCK_12H)
-            .setHour(12)
+            .setHour(12) //12-hr format
             .setMinute(0)
             .setTitleText("Select Alarm Time")
             .build()
         picker!!.show(supportFragmentManager, "littlechef")
         picker!!.addOnPositiveButtonClickListener {
-            if (picker!!.hour > 12) {
+            if (picker!!.hour > 12) { //PM
                 binding!!.selectedTime.text =
                     String.format("Selected time is \n"+
                             "%02d",
                         picker!!.hour - 12
                     ) + " : " + String.format("%02d", picker!!.minute) + " PM" + "\nClick on Set Alarm"
 
-            } else {
+            } else { //AM
                 binding!!.selectedTime.text =
                     "Selected time is \n"+picker!!.hour.toString() + " : " + picker!!.minute + " AM" + "\nClick on Set Alarm"
             }
@@ -91,6 +97,10 @@ class TimerActivity : DrawerBaseActivity()  {
             Toast.makeText(this, "Click on Set Alarm to be alerted", Toast.LENGTH_SHORT).show()
 
 
+            /*
+                Calendar's getInstance method returns a Calendar object whose
+                calendar fields have been initialized with the current date and time
+             */
             calendar = Calendar.getInstance()
             calendar!![Calendar.HOUR_OF_DAY] =  picker!!.hour
             calendar!![Calendar.MINUTE] = picker!!.minute
@@ -103,6 +113,12 @@ class TimerActivity : DrawerBaseActivity()  {
     }
 
     private fun createNotificationChannel() {
+        /*
+            check if device running the app has Android SDK 26 or up
+            Notification channels were added in Android 8.0. Attempting
+            to call createNotificationChannel() on older devices would
+            result in a crash, as that method will not exist.
+        */
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name: CharSequence = "littlechefReminderChannel"
             val description = "Reminder to check on your dish"
@@ -112,8 +128,10 @@ class TimerActivity : DrawerBaseActivity()  {
             val notificationManager = getSystemService(
                 NotificationManager::class.java
             )
+            //timerReceiver has a broadcast receiver to known when time's up
             notificationManager.createNotificationChannel(channel)
 
+            //once timer has gone off reset the timer
             binding!!.selectedTime.text = "No alarm has been set"
         }
     }

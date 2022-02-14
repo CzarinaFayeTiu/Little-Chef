@@ -29,28 +29,41 @@ open class DrawerBaseActivity : AppCompatActivity(), NavigationView.OnNavigation
     }
 
     override fun setContentView(view: View?) {
+        /*
+            DrawerLayout acts as a top-level container for window content that
+            allows for interactive "drawer" views to be pulled out from one or
+            both vertical edges of the window.
+         */
         val drawerLayout = layoutInflater.inflate(R.layout.activity_drawer_base, null) as DrawerLayout
+
+        //frame layout in content_layout
         val container = drawerLayout.findViewById<FrameLayout>(R.id.activityContainer)
         container.addView(view)
         super.setContentView(drawerLayout)
 
+        //toolbar located in content_layout too <- assign the drawerlayout
         val toolbar: Toolbar = drawerLayout.findViewById(R.id.toolBar)
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
         setSupportActionBar(toolbar)
-        //toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
 
+        /*
+            Represents a standard navigation menu for application.
+            The menu contents can be populated by a menu resource file.
+        */
+        //navigationview in activity_drawer_base.xml
         val navigationView: NavigationView = drawerLayout.findViewById(R.id.nav_view)
         navigationView.setItemIconTintList(null)
-        //navigationView.setNavigationItemSelectedListener(this)
 
+        //open and close side navigation pannel
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar,
             R.string.menu_drawer_open, R.string.menu_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
+        //this is where everthing gets redirected to its respective activities
+        // IDs are declared in menu -> nav_menu
         navigationView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_home -> {

@@ -39,10 +39,16 @@ class FacebookActivity: DrawerBaseActivity()  {
         textView = binding!!.tvName
         imageView = binding!!.tvProfilePic
 
+        /*
+            The CallbackManager manages the callbacks into the FacebookSdk
+            from an Activity's or Fragment's onActivityResult() method.
+         */
         callbackManager = CallbackManager.Factory.create()
 
+        //get permission from user to log into fb
         loginButton.setPermissions(listOf("email"))
 
+        //login status
         loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
             override fun onSuccess(loginResult: LoginResult?) {
                 Log.d("FACEBOOK", "Login Successful!")
@@ -56,6 +62,7 @@ class FacebookActivity: DrawerBaseActivity()  {
                 Log.d("FACEBOOK", "Login Error")
             }
         })
+        //if user has already previously log in load picture and name into page
         val graphRequest =
             GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken())
             { `object`, response ->
@@ -75,9 +82,8 @@ class FacebookActivity: DrawerBaseActivity()  {
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
-
-
             }
+
         val bundle = Bundle()
         bundle.putString(
             "fields",
@@ -88,6 +94,7 @@ class FacebookActivity: DrawerBaseActivity()  {
 
     }
 
+    //load image and picture upon successful log in
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager!!.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)

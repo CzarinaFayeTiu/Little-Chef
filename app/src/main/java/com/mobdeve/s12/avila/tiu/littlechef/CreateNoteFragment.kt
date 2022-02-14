@@ -70,6 +70,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             }
     }
 
+    //set view status whether visible or gone
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -125,6 +126,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
 
         imgDone.setOnClickListener {
             if (noteId != -1){
+                //if note has been created then just update it
                 updateNote()
             }else{
                 //if note has not been created yet save note
@@ -132,6 +134,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             }
         }
 
+        //if user opens a note then preses the back img
         imgBack.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
@@ -142,12 +145,13 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             noteBottomSheetFragment.show(requireActivity().supportFragmentManager,"Note Bottom Sheet Fragment")
         }
 
+        //delete a note
         imgDelete.setOnClickListener {
             selectedImagePath = ""
             layoutImage.visibility = View.GONE
-
         }
 
+        //ok button of url input - optional
         btnOk.setOnClickListener {
             if (etWebLink.text.toString().trim().isNotEmpty()){
                 checkWebUrl()
@@ -156,6 +160,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             }
         }
 
+        //cancel button of urlinput if user doesnt want
         btnCancel.setOnClickListener {
             if (noteId != -1){
                 tvWebLink.visibility = View.VISIBLE
@@ -165,7 +170,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             }
 
         }
-
+        // x image at the upper right corner of url box to delete
         imgUrlDelete.setOnClickListener {
             webLink = ""
             tvWebLink.visibility = View.GONE
@@ -173,24 +178,26 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             layoutWebUrl.visibility = View.GONE
         }
 
+        //if the url link the  user input is clicked then go to that website
         tvWebLink.setOnClickListener {
             var intent = Intent(Intent.ACTION_VIEW,Uri.parse(etWebLink.text.toString()))
             startActivity(intent)
         }
 
+        //share to facebook
         imgShare.setOnClickListener {
             shareNote()
         }
 
     }
 
-
+    //update changes in note
     private fun updateNote(){
         launch {
 
             context?.let {
                 var notes = NotesDatabase.getDatabase(it).noteDao().getSpecificNote(noteId)
-
+                //load everything into note object again
                 notes.title = etNoteTitle.text.toString()
                 notes.subTitle = etNoteSubTitle.text.toString()
                 notes.noteText = etNoteDesc.text.toString()
@@ -198,7 +205,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 notes.color = selectedColor
                 notes.imgPath = selectedImagePath
                 notes.webLink = webLink
-
+                //call for update note to update contents in db
                 NotesDatabase.getDatabase(it).noteDao().updateNote(notes)
                 etNoteTitle.setText("")
                 etNoteSubTitle.setText("")
@@ -263,7 +270,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         }
 
     }
-
+    //share to facebook
     private fun shareNote(){
 
             launch {
@@ -283,11 +290,15 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
 
                 callbackManager = CallbackManager.Factory.create()
 
+                //pronounce publicity of little chef by adding a hastag in the template post to be shared
                 var hashtag = ShareHashtag.Builder()
                     .setHashtag("#LittleChef")
                     .build()
 
+                //share a url link to share the note contents in quotes, <- restriction of facebook
                 var shareLinkContent:ShareLinkContent
+
+                //if the user provides a web link then share that link
                 if(webLink.trim().isNotEmpty()) {
                     shareLinkContent = ShareLinkContent.Builder()
                         .setQuote(quote)
@@ -296,6 +307,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                         .build()
                     Log.d("FACEBOOK", "THERE IS A WEB LINK")
                 }else{
+                    //if a user doesnt provide a web url use a default one
                     shareLinkContent = ShareLinkContent.Builder()
                         .setQuote(quote)
                         .setShareHashtag(hashtag)
@@ -304,14 +316,14 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                     Log.d("FACEBOOK", "THERE IS NO LINK")
                 }
 
-
+                //share this note with the contents written in shareLinkContent
                 ShareDialog.show(this@CreateNoteFragment, shareLinkContent)
 
             }
 
 
     }
-
+    //get the id of the current note opened and delete it
     private fun deleteNote(){
 
         launch {
@@ -321,7 +333,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             }
         }
     }
-
+    //check if url is valid
     private fun checkWebUrl(){
         if (Patterns.WEB_URL.matcher(etWebLink.text.toString()).matches()){
             layoutWebUrl.visibility = View.GONE

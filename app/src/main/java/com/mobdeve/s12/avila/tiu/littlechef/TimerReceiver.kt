@@ -17,11 +17,11 @@ class TimerReceiver : BroadcastReceiver() {
 
         val builder = NotificationCompat.Builder(context, "littlechef")
             .setSmallIcon(R.drawable.ic_launcher_background)
-            .setContentTitle("Times Up!!")
-            .setContentText("Check your dish now!")
+            .setContentTitle("Times Up!!") //title written in bold
+            .setContentText("Check your dish now!") //description below the title
             .setAutoCancel(true)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setPriority(NotificationCompat.PRIORITY_HIGH) //high notification priority on phone
             .setContentIntent(pendingIntent)//when user taps on notification it calls pending intent
         val notificationManagerCompat = NotificationManagerCompat.from(context)
         notificationManagerCompat.notify(123, builder.build())
