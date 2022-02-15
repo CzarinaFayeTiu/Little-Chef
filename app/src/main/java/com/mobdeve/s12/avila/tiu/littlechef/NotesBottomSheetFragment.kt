@@ -16,7 +16,7 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
     var selectedColor = "#171C26"
 
     /*
-        The bottom layer is wrap in a fragment in fragmet_create_note
+        The bottom layer is wrap in a fragment in fragment_create_note
         when it is click open the bottom sheet fragment
      */
     companion object {

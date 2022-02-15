@@ -139,7 +139,7 @@ class FacebookActivity: DrawerBaseActivity()  {
             if (currentAccessToken == null) { //if null it means log out
                 LoginManager.getInstance().logOut()
                 textView!!.text = ""
-                imageView!!.setImageResource(R.drawable.person)
+                imageView!!.setImageResource(R.drawable.littlechef_logo)
 
             }
         }

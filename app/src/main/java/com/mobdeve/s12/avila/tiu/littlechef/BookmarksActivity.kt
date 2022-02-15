@@ -15,8 +15,6 @@ class BookmarksActivity :DrawerBaseActivity()  {
 
     //db helper
     lateinit var dbHelper: MyDbHelper
-    //order by sor queries
-    private val NEWEST_FIRST = "${Constants.C_ADDED_TIMESTAMP} DESC"
 
 
     //lateinit var toggle: ActionBarDrawerToggle
