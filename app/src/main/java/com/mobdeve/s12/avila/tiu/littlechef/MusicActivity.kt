@@ -30,6 +30,7 @@ class MusicActivity: DrawerBaseActivity() {
     var songTitle: TextView? = null
     var mSeekBarTime: SeekBar? = null
     var mMediaPlayer: MediaPlayer? = null
+
     var currentIndex = 0
 
 
@@ -51,6 +52,8 @@ class MusicActivity: DrawerBaseActivity() {
         imageView = binding!!.imageView
         mSeekBarTime = binding!!.seekBarTime
 
+
+
         // creating an ArrayList to store our songs
         val songs = ArrayList<Int>()
 
@@ -66,6 +69,7 @@ class MusicActivity: DrawerBaseActivity() {
 
         play!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
+
                 mSeekBarTime!!.max = mMediaPlayer!!.getDuration()
                 if (mMediaPlayer != null && mMediaPlayer!!.isPlaying) {
                     mMediaPlayer!!.pause()
@@ -114,6 +118,7 @@ class MusicActivity: DrawerBaseActivity() {
             songNames()
         }
     }
+
 
     private fun songNames() {
         if (currentIndex == 0) {

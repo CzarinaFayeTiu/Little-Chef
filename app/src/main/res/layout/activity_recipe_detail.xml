@@ -41,103 +41,111 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TableLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="2">
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:stretchColumns="2">
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/tvRecipeName"
-                    android:text="Name"
-                    android:textSize="30dp"
-                    android:padding="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text"/>
-            </TableRow>
-            <TableRow>
-                <TextView
-                    android:id="@+id/tvRecipeCategory"
-                    android:text="Category"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text"/>
-            </TableRow>
-            <TableRow>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <TableRow>
                     <TextView
+                        android:id="@+id/tvRecipeName"
+                        android:text="Name"
+                        android:textSize="30dp"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="Ingredients"
-                        android:textColor="@color/text"
-                        android:textSize="20dp" />
-                    <ImageView
-                        android:id="@+id/ingredientsSpeakBtn"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_baseline_volume_up_24"
-                        app:tint="@color/purple_500"
-                        android:layout_marginTop="20dp"/>
-                </LinearLayout>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/tvRecipeIngredients"
-                    android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:textColor="@color/text"
-                    android:layout_marginLeft="40dp"
-                    android:text="Ingredients Stuff" />
-            </TableRow>
-            <TableRow>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
+                        android:textColor="@color/text"/>
+                </TableRow>
+                <TableRow>
                     <TextView
-                        android:id="@+id/tv_Instructions"
+                        android:id="@+id/tvRecipeCategory"
+                        android:text="Category"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:text="Instructions"
+                        android:textColor="@color/text"/>
+                </TableRow>
+                <TableRow>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="20dp"
+                            android:text="Ingredients"
+                            android:textColor="@color/text"
+                            android:textSize="20dp" />
+                        <ImageView
+                            android:id="@+id/ingredientsSpeakBtn"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_baseline_volume_up_24"
+                            app:tint="@color/purple_500"
+                            android:layout_marginTop="20dp"/>
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/tvRecipeIngredients"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
                         android:textColor="@color/text"
-                        android:textSize="20dp" />
+                        android:layout_marginLeft="40dp"
+                        android:text="Ingredients Stuff" />
+                </TableRow>
+                <TableRow>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/speakBtn"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_baseline_volume_up_24"
-                        app:tint="@color/purple_500"
-                        android:layout_marginTop="20dp"/>
-                </LinearLayout>
-            </TableRow>
-            <TableRow>
+                        <TextView
+                            android:id="@+id/tv_Instructions"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:text="Instructions"
+                            android:textColor="@color/text"
+                            android:textSize="20dp" />
 
-                <TextView
-                    android:id="@+id/tvRecipeInstructions"
-                    android:layout_width="341dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:text="Instructions Stuff"
-                    android:textColor="@color/text" />
-            </TableRow>
+                        <ImageView
+                            android:id="@+id/speakBtn"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_baseline_volume_up_24"
+                            app:tint="@color/purple_500"
+                            android:layout_marginTop="20dp"/>
+                    </LinearLayout>
+                </TableRow>
+                <TableRow>
 
-        </TableLayout>
+                    <TextView
+                        android:id="@+id/tvRecipeInstructions"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:text="Instructions Stuff"
+                        android:textColor="@color/text" />
+                </TableRow>
+
+            </TableLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 
